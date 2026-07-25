@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%23fff1f6'/%3E%3Crect x='20' y='7' width='3' height='6' rx='1.5' fill='none' stroke='%23d9467d' stroke-width='1.6'/%3E%3Cpath d='M5,17 Q5,15 7,14 L16,6 L25,14 Q27,15 27,17 Z' fill='none' stroke='%23d9467d' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/%3E%3Crect x='7' y='16' width='18' height='11' rx='2.5' fill='none' stroke='%23d9467d' stroke-width='2'/%3E%3Cpath d='M14,27 L14,22 Q14,19.5 16,19.5 Q18,19.5 18,22 L18,27' fill='none' stroke='%23d9467d' stroke-width='1.6'/%3E%3Ccircle cx='10.5' cy='21' r='2' fill='none' stroke='%23d9467d' stroke-width='1.5'/%3E%3Ccircle cx='21.5' cy='21' r='2' fill='none' stroke='%23d9467d' stroke-width='1.5'/%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#f0faf7">
+    <meta name="description" content="Welcome guide for Maisonnotle303 — your cozy home in Higashi-Shinjuku, Tokyo.">
+    <title>Welcome to Maison Notle 303</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f0faf7;
+            --cream-deep: #e1f3ef;
+            --orange: #99c9bd;
+            --orange-light: #b7d9d1;
+            --orange-soft: #e1f3ef;
+            --teal: #99c9bd;
+            --teal-light: #b7d9d1;
+            --teal-dark: #6fa99c;
+            --teal-soft: #e1f3ef;
+            --dusty-rose: #9fcfc4;
+            --dusty-rose-light: #c9e7e1;
+            --dusty-rose-soft: #e1f3ef;
+            --green-dark: #6fa99c;
+            --green-soft: #b7d9d1;
+            --text-dark: #203d38;
+            --text-mid: #42675f;
+            --text-soft: #689087;
+            --white: #ffffff;
+            --ink-15: rgba(45,95,85,0.15);
+
+            --shadow-xs: 0 1px 2px rgba(45,95,85,0.06);
+            --shadow-sm: 0 2px 8px rgba(45,95,85,0.09);
+            --shadow-md: 0 4px 18px rgba(45,95,85,0.12);
+            --shadow-lg: 0 10px 34px rgba(45,95,85,0.18);
+            --shadow-hover: 0 14px 38px rgba(45,95,85,0.22);
+
+            --r-sm: 10px;
+            --r-md: 16px;
+            --r-lg: 22px;
+            --r-xl: 28px;
+
+            --ease-pop: cubic-bezier(.34,1.56,.64,1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: env(safe-area-inset-bottom);
+            line-height: 1.55;
+        }
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(4px);
+        }
+        body::before {
+            top: -120px; right: -100px;
+            width: 360px; height: 360px;
+            background: radial-gradient(circle, var(--orange-light) 0%, transparent 68%);
+        }
+        body::after {
+            bottom: -140px; left: -120px;
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, var(--teal-light) 0%, transparent 70%);
+        }
+        main::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.35) 0, transparent 40%),
+                              radial-gradient(circle at 80% 90%, rgba(255,255,255,0.25) 0, transparent 40%);
+            pointer-events: none; z-index: 0;
+        }
+        .skip-link {
+            position: absolute; left: -9999px; top: 10px;
+            background: var(--orange); color: #fff;
+            padding: 10px 16px; border-radius: 999px; font-weight: 800; z-index: 1000;
+        }
+        .skip-link:focus { left: 10px; }
+        main { position: relative; max-width: 560px; margin: 0 auto; z-index: 1; }
+
+        .lang-switcher {
+            position: fixed; top: calc(10px + env(safe-area-inset-top)); right: 10px;
+            z-index: 100; display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 200px;
+        }
+        .lang-btn {
+            border: 1.5px solid rgba(153,201,189,0.35);
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-radius: 999px; padding: 5px 10px; font-family: inherit; font-size: 0.72rem; font-weight: 800;
+            color: var(--text-mid); cursor: pointer; transition: all 0.2s ease; box-shadow: var(--shadow-xs); letter-spacing: 0.02em;
+        }
+        .lang-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 4px 12px rgba(153,201,189,0.35); }
+        .lang-btn:hover:not(.active), .lang-btn:focus-visible:not(.active) { border-color: var(--orange); color: var(--orange); outline: none; }
+
+        .hero { text-align: center; padding: 54px 24px 28px; position: relative; }
+        .hero-house {
+            display: inline-block; font-size: 68px; line-height: 1; margin-bottom: 10px;
+            animation: floatHouse 3.5s ease-in-out infinite;
+            filter: drop-shadow(0 8px 14px rgba(153,201,189,0.25));
+        }
+        @keyframes floatHouse { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-7px) rotate(2deg); } }
+        .hero h1 {
+            font-family: 'Pacifico', cursive; font-weight: 400; font-size: clamp(2rem, 7vw, 3rem);
+            color: var(--teal-dark); line-height: 1.15; text-shadow: 3px 3px 0 var(--teal-soft);
+            margin-bottom: 8px; letter-spacing: 0.01em;
+        }
+        .hero-sub { font-size: 0.92rem; color: var(--text-mid); font-weight: 700; letter-spacing: 0.06em; }
+        .hero-location {
+            display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;
+            padding: 5px 14px; border-radius: 999px; background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: var(--text-mid);
+            font-size: 0.76rem; font-weight: 800; letter-spacing: 0.05em; border: 1px solid rgba(153,201,189,0.18);
+        }
+
+        .wifi-card {
+            margin: 8px 16px 28px;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+            border-radius: var(--r-xl); padding: 18px 18px 16px; box-shadow: var(--shadow-md);
+            position: relative; overflow: hidden; color: #fff; animation: slideDown 0.5s ease both;
+        }
+        .wifi-card::before {
+            content: '\1F4F6'; position: absolute; right: -6px; top: -10px;
+            font-size: 84px; opacity: 0.10; transform: rotate(-12deg);
+        }
+        .wifi-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .wifi-head-label { font-size: 0.72rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.8); flex: 1; }
+        .wifi-head-emoji { font-size: 1.4rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+        .qr-toggle {
+            border: 1.5px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px); border-radius: 999px; padding: 5px 12px; font-family: inherit;
+            font-size: 0.72rem; font-weight: 800; color: #fff; cursor: pointer; letter-spacing: 0.05em;
+            transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px;
+        }
+        .qr-toggle:hover, .qr-toggle:focus-visible { background: rgba(255,255,255,0.28); border-color: rgba(255,255,255,0.6); outline: none; }
+        .qr-toggle .qr-ico { font-size: 0.9rem; }
+        .wifi-rows { display: flex; flex-direction: column; gap: 8px; }
+        .wifi-row {
+            display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+            background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22);
+            border-radius: var(--r-md); color: inherit; font-family: inherit; cursor: pointer;
+            text-align: left; transition: background 0.2s, transform 0.15s var(--ease-pop); width: 100%;
+        }
+        .wifi-row:hover, .wifi-row:focus-visible { background: rgba(255,255,255,0.22); outline: none; }
+        .wifi-row:active { transform: scale(0.98); }
+        .wifi-row.copied { background: rgba(127,255,176,0.35); }
+        .wifi-row-label { font-size: 0.66rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); min-width: 56px; }
+        .wifi-row-val { flex: 1; font-size: 0.98rem; font-weight: 800; color: #fff; letter-spacing: 0.02em; word-break: break-all; }
+        .wifi-row-action { font-size: 0.95rem; opacity: 0.75; flex-shrink: 0; transition: transform 0.3s var(--ease-pop); }
+        .wifi-row:hover .wifi-row-action { transform: scale(1.15); opacity: 1; }
+        .wifi-qr { display: none; margin-top: 14px; padding: 16px; background: #fff; border-radius: var(--r-md); text-align: center; animation: fadeIn 0.3s ease; }
+        .wifi-qr.visible { display: block; }
+        .wifi-qr canvas, .wifi-qr img { display: block; margin: 0 auto 8px; max-width: 200px; height: auto; image-rendering: pixelated; }
+        .wifi-qr-hint { font-size: 0.78rem; color: var(--text-mid); font-weight: 700; }
+
+        .toast {
+            position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px);
+            background: var(--text-dark); color: #fff; padding: 10px 18px; border-radius: 999px;
+            font-size: 0.85rem; font-weight: 800; box-shadow: var(--shadow-lg); opacity: 0;
+            pointer-events: none; transition: all 0.3s var(--ease-pop); z-index: 200; display: flex; align-items: center; gap: 8px;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        .menu { padding: 0 16px; }
+        .menu-group { margin-bottom: 18px; }
+        .menu-group-head { display: flex; align-items: baseline; gap: 10px; margin: 0 4px 12px; }
+        .menu-group-title { font-family: 'Pacifico', cursive; font-weight: 400; font-size: 1.1rem; color: var(--orange); letter-spacing: 0.02em; }
+        .menu-group-line { flex: 1; height: 2px; background: linear-gradient(to right, var(--orange-light), transparent); border-radius: 2px; }
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .pl-btn {
+            background: var(--white); border-radius: var(--r-lg); padding: 18px 12px 16px;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            text-decoration: none; color: var(--text-dark); box-shadow: var(--shadow-sm);
+            border: 1.5px solid transparent; transition: transform 0.22s var(--ease-pop), box-shadow 0.22s ease, border-color 0.2s ease, background 0.2s ease;
+            animation: popIn 0.4s var(--ease-pop) both; position: relative; overflow: hidden;
+        }
+        .pl-btn::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--btn-accent, var(--orange)); opacity: 0; transition: opacity 0.2s; }
+        .pl-btn:hover, .pl-btn:focus-visible, .pl-btn:active { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--btn-accent, var(--orange)); outline: none; }
+        .pl-btn:hover::before, .pl-btn:focus-visible::before { opacity: 1; }
+        .pl-icon-wrap { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--btn-tint, var(--orange-soft)); transition: transform 0.3s var(--ease-pop); }
+        .pl-btn:hover .pl-icon-wrap { transform: scale(1.08) rotate(-5deg); }
+        .pl-icon { font-size: 1.8rem; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.08)); }
+        .pl-en { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--btn-accent, var(--orange)); text-align: center; line-height: 1.2; }
+        .pl-ja { font-size: 0.7rem; font-weight: 700; color: var(--text-mid); text-align: center; line-height: 1.35; }
+        .pl-btn:nth-of-type(1) { --btn-accent: var(--orange);     --btn-tint: var(--orange-soft);     animation-delay: 0.05s; }
+        .pl-btn:nth-of-type(2) { --btn-accent: var(--teal-dark);  --btn-tint: var(--teal-soft);       animation-delay: 0.1s; }
+        .pl-btn:nth-of-type(3) { --btn-accent: var(--dusty-rose); --btn-tint: var(--dusty-rose-soft); animation-delay: 0.15s; }
+        .pl-btn:nth-of-type(4) { --btn-accent: var(--green-dark); --btn-tint: var(--green-soft);      animation-delay: 0.2s; }
+
+        @keyframes popIn { from { opacity: 0; transform: scale(0.88) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .chat-section { margin: 28px 16px 0; position: relative; }
+        .chat-box { background: var(--white); border-radius: var(--r-xl); box-shadow: var(--shadow-md); overflow: hidden; border: 1.5px solid var(--orange-light); }
+        .chat-header {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--teal-dark) 100%);
+            padding: 14px 18px; display: flex; align-items: center; gap: 12px; position: relative; overflow: hidden;
+        }
+        .chat-header::after { content: ''; position: absolute; right: -20px; top: -20px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+        .chat-avatar { width: 42px; height: 42px; background: rgba(255,255,255,0.28); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; position: relative; z-index: 1; }
+        .chat-hd-text { position: relative; z-index: 1; }
+        .chat-hd-name { font-weight: 900; font-size: 1rem; color: #fff; letter-spacing: 0.02em; }
+        .chat-hd-status { font-size: 0.72rem; color: rgba(255,255,255,0.88); font-weight: 700; display: flex; align-items: center; }
+        .online-dot { width: 8px; height: 8px; border-radius: 50%; background: #7fffb0; display: inline-block; margin-right: 5px; animation: blink 1.6s ease infinite; box-shadow: 0 0 6px rgba(127,255,176,0.7); }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .chat-msgs { height: 220px; overflow-y: auto; padding: 16px 14px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        .chat-msgs::-webkit-scrollbar { width: 4px; }
+        .chat-msgs::-webkit-scrollbar-track { background: transparent; }
+        .chat-msgs::-webkit-scrollbar-thumb { background: var(--orange-light); border-radius: 4px; }
+        .msg { max-width: 82%; padding: 10px 14px; border-radius: 16px; font-size: 0.87rem; line-height: 1.55; font-weight: 600; animation: msgPop 0.3s var(--ease-pop) both; white-space: pre-wrap; word-wrap: break-word; }
+        @keyframes msgPop { from { opacity: 0; transform: scale(0.92) translateY(4px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .msg.bot { background: var(--teal-soft); color: var(--text-dark); border-radius: 4px 16px 16px 16px; align-self: flex-start; }
+        .msg.user { background: var(--orange); color: #fff; border-radius: 16px 4px 16px 16px; align-self: flex-end; }
+        .msg.typing { background: var(--teal-soft); border-radius: 4px 16px 16px 16px; align-self: flex-start; padding: 14px 18px; }
+        .typing-dots { display: flex; gap: 4px; align-items: center; }
+        .typing-dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--teal-dark); opacity: 0.6; animation: dot 1.2s ease infinite; }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes dot { 0%,80%,100% { transform: scale(0.9); opacity: 0.5; } 40% { transform: scale(1.3); opacity: 1; } }
+        .quick-chips { display: flex; gap: 6px; padding: 0 14px 12px; flex-wrap: wrap; border-bottom: 1.5px solid var(--orange-soft); }
+        .chip { background: var(--cream); border: 1.5px solid var(--orange-light); color: var(--text-mid); padding: 6px 12px; border-radius: 999px; font-family: inherit; font-size: 0.75rem; font-weight: 800; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .chip:hover, .chip:focus-visible { background: var(--orange); color: #fff; border-color: var(--orange); outline: none; }
+        .chat-input-row { display: flex; padding: 12px 14px; gap: 8px; background: var(--cream); }
+        .chat-input { flex: 1; border: 1.5px solid var(--orange-light); border-radius: 999px; padding: 10px 16px; font-family: inherit; font-size: 0.9rem; font-weight: 600; color: var(--text-dark); background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+        .chat-input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(153,201,189,0.15); }
+        .chat-input::placeholder { color: #c88aa3; }
+        .send-btn { width: 42px; height: 42px; border-radius: 50%; background: var(--orange); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; transition: transform 0.2s var(--ease-pop), background 0.2s; flex-shrink: 0; }
+        .send-btn:hover, .send-btn:focus-visible { transform: scale(1.1); background: #be185d; outline: none; }
+        .send-btn:active { transform: scale(0.94); }
+
+        .emergency-strip { margin: 20px 16px 28px; background: linear-gradient(135deg, #c0383a 0%, #a02020 100%); border-radius: var(--r-lg); padding: 14px 16px; box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 10px; }
+        .emergency-head { display: flex; align-items: center; gap: 10px; }
+        .em-icon { font-size: 1.4rem; }
+        .em-title { font-weight: 900; font-size: 0.8rem; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 0.1em; }
+        .em-buttons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .em-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: var(--r-md); color: #fff; text-decoration: none; font-family: inherit; transition: background 0.2s, transform 0.15s var(--ease-pop); }
+        .em-btn:hover, .em-btn:focus-visible { background: rgba(255,255,255,0.28); outline: none; }
+        .em-btn:active { transform: scale(0.97); }
+        .em-btn-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.88; }
+        .em-btn-num { font-size: 1rem; font-weight: 900; letter-spacing: 0.04em; }
+
+        .site-footer { text-align: center; padding: 20px 16px 32px; color: var(--text-soft); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; }
+        .site-footer .heart { color: var(--orange); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .hero-house { animation: none; }
+            .online-dot { animation: none; }
+        }
+        @media (min-width: 520px) { .btn-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+  <link rel="stylesheet" href="assets/cute-pack.css">
+  <style id="cute-pack-theme">:root{--cp-chip-a:#e1f3ef;--cp-chip-b:#fdf1f7;--cp-hover-shadow:rgba(153,201,189,.18);--cp-dot-1:rgba(249,168,212,.12);}</style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="lang-switcher" aria-label="Language">
+        <button class="lang-btn active" onclick="setLang('en', this)" aria-label="English">EN</button>
+        <button class="lang-btn" onclick="setLang('ja', this)" aria-label="&#x65E5;&#x672C;&#x8A9E;">JA</button>
+        <button class="lang-btn" onclick="setLang('zh', this)" aria-label="&#x4E2D;&#x6587;">ZH</button>
+        <button class="lang-btn" onclick="setLang('ko', this)" aria-label="&#xD55C;&#xAD6D;&#xC5B4;">KO</button>
+        <button class="lang-btn" onclick="setLang('fr', this)" aria-label="Fran&#xE7;ais">FR</button>
+        <button class="lang-btn" onclick="setLang('es', this)" aria-label="Espa&#xF1;ol">ES</button>
+    </nav>
+    <main id="main">
+        <header class="hero">
+            <span class="hero-house" aria-hidden="true">&#x1F3E0;</span>
+            <h1>Maisonnotle303</h1>
+            <p class="hero-sub" data-i18n="headerSub">Welcome Guide &#x2728; Welcome!</p>
+            <p class="hero-location" data-i18n="heroLocation">&#x1F4CD; Higashi-Shinjuku, Tokyo</p>
+        </header>
+        <section class="wifi-card" aria-labelledby="wifi-title">
+            <div class="wifi-head">
+                <span class="wifi-head-emoji" aria-hidden="true">&#x1F4F6;</span>
+                <span class="wifi-head-label" id="wifi-title" data-i18n="wifiLabel">Wi-Fi</span>
+                <button class="qr-toggle" id="qrToggle" onclick="toggleQR()" aria-expanded="false" aria-controls="wifiQr">
+                    <span class="qr-ico">&#x25A3;</span>
+                    <span data-i18n="qrBtn">QR</span>
+                </button>
+            </div>
+            <div class="wifi-rows">
+                <button class="wifi-row" onclick="copyWifi(this, 'Maisonnotle303')" aria-label="Copy network name">
+                    <span class="wifi-row-label" data-i18n="ssidLabel">Network</span>
+                    <span class="wifi-row-val">Maisonnotle303</span>
+                    <span class="wifi-row-action" aria-hidden="true">&#x29C9;</span>
+                </button>
+                <button class="wifi-row" onclick="copyWifi(this, '')" aria-label="Copy password">
+                    <span class="wifi-row-label" data-i18n="passLabel">Password</span>
+                    <span class="wifi-row-val">hello.okubo</span>
+                    <span class="wifi-row-action" aria-hidden="true">&#x29C9;</span>
+                </button>
+            </div>
+            <div class="wifi-qr" id="wifiQr">
+                <img id="wifiQrImg" alt="Wi-Fi QR code" width="200" height="200">
+                <p class="wifi-qr-hint" data-i18n="qrHint">Scan with your camera to connect</p>
+            </div>
+        </section>
+        <nav class="menu" aria-label="Guest menu">
+            <div class="menu-group">
+                <div class="menu-group-head">
+                    <span class="menu-group-title" data-i18n="catArrive">Arriving</span>
+                    <span class="menu-group-line"></span>
+                </div>
+                <div class="btn-grid">
+                    <a href="access/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F3E0;</span></span>
+                        <span class="pl-en" data-i18n="btn1">Route to Accommodations</span>
+                        <span class="pl-ja">&#x5BBF;&#x6CCA;&#x65BD;&#x8A2D;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C8;</span>
+                    </a>
+                    <a href="taxi/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F695;</span></span>
+                        <span class="pl-en" data-i18n="btn2">By Taxi</span>
+                        <span class="pl-ja">&#x30BF;&#x30AF;&#x30B7;&#x30FC;&#x3092;&#x3054;&#x5229;&#x7528;&#x306E;&#x5834;&#x5408;</span>
+                    </a>
+                    <a href="how-to-open/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F511;</span></span>
+                        <span class="pl-en" data-i18n="btn3">How to Open</span>
+                        <span class="pl-ja">&#x9375;&#x306E;&#x958B;&#x3051;&#x65B9;</span>
+                    </a>
+                    <a href="parking/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F697;</span></span>
+                        <span class="pl-en" data-i18n="btn7">Parking</span>
+                        <span class="pl-ja">&#x99D0;&#x8ECA;&#x5834;&#x60C5;&#x5831;</span>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-head">
+                    <span class="menu-group-title" data-i18n="catInside">Inside the Home</span>
+                    <span class="menu-group-line"></span>
+                </div>
+                <div class="btn-grid">
+                    <a href="house-rules/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F4CB;</span></span>
+                        <span class="pl-en" data-i18n="btn4">House Rules</span>
+                        <span class="pl-ja">&#x30CF;&#x30A6;&#x30B9;&#x30EB;&#x30FC;&#x30EB;</span>
+                    </a>
+                    <a href="equipment/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F6E0;&#xFE0F;</span></span>
+                        <span class="pl-en" data-i18n="btn5">Equipment</span>
+                        <span class="pl-ja">&#x8A2D;&#x5099;&#x306B;&#x3064;&#x3044;&#x3066;</span>
+                    </a>
+                    <a href="laundry/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1FAE7;</span></span>
+                        <span class="pl-en" data-i18n="btn9">Laundry</span>
+                        <span class="pl-ja">&#x6D17;&#x6FEF;&#x6A5F;&#x306E;&#x4F7F;&#x3044;&#x65B9;</span>
+                    </a>
+                    <a href="trash/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F5D1;&#xFE0F;</span></span>
+                        <span class="pl-en" data-i18n="btn8">Trash</span>
+                        <span class="pl-ja">&#x30B4;&#x30DF;&#x306E;&#x51FA;&#x3057;&#x65B9;</span>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-group">
+                <div class="menu-group-head">
+                    <span class="menu-group-title" data-i18n="catHelp">Help &amp; Neighborhood</span>
+                    <span class="menu-group-line"></span>
+                </div>
+                <div class="btn-grid">
+                    <a href="nearby-shops/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F5FA;&#xFE0F;</span></span>
+                        <span class="pl-en" data-i18n="btn6">Nearby Shops</span>
+                        <span class="pl-ja">近辺のお店情報</span>
+                    </a>
+                    <a href="circuit-breaker/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x26A1;</span></span>
+                        <span class="pl-en" data-i18n="btn10">Circuit Breaker</span>
+                        <span class="pl-ja">&#x30D6;&#x30EC;&#x30FC;&#x30AB;&#x30FC;&#x306B;&#x3064;&#x3044;&#x3066;</span>
+                    </a>
+                    <a href="gas-reset/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F525;</span></span>
+                        <span class="pl-en" data-i18n="btn12">Gas Reset</span>
+                        <span class="pl-ja">&#x30AC;&#x30B9;&#x30E1;&#x30FC;&#x30BF;&#x30FC;&#x5FA9;&#x5E30;</span>
+                    </a>
+                    <a href="emergency/" class="pl-btn">
+                        <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F4DE;</span></span>
+                        <span class="pl-en" data-i18n="btn11">Emergency</span>
+                        <span class="pl-ja">&#x7DCA;&#x6025;&#x6642;&#x306E;&#x9023;&#x7D61;</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <section class="chat-section" aria-labelledby="chat-title">
+            <div class="chat-box">
+                <div class="chat-header">
+                    <div class="chat-avatar" aria-hidden="true">&#x1F916;</div>
+                    <div class="chat-hd-text">
+                        <div class="chat-hd-name" id="chat-title">Maisonnotle303 Assistant</div>
+                        <div class="chat-hd-status"><span class="online-dot" aria-hidden="true"></span><span id="statusText">Always here to help!</span></div>
+                    </div>
+                </div>
+                <div class="chat-msgs" id="chatMsgs" aria-live="polite">
+                    <div class="msg bot">Hi! &#x1F60A; Welcome to Maison Notle 303!<br>How can I help you today?</div>
+                </div>
+                <div class="quick-chips" id="quickChips" aria-label="Suggested questions">
+                    <button type="button" class="chip" data-chip="chipCheckin" onclick="askChip(this)">&#x1F550; Check-in time?</button>
+                    <button type="button" class="chip" data-chip="chipCheckout" onclick="askChip(this)">&#x1F554; Check-out time?</button>
+                    <button type="button" class="chip" data-chip="chipWifi" onclick="askChip(this)">&#x1F4F6; Wi-Fi?</button>
+                </div>
+                <div class="chat-input-row">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Type a question&#x2026;" aria-label="Type your question">
+                    <button class="send-btn" onclick="sendMessage()" aria-label="Send message">&#x27A4;</button>
+                </div>
+            </div>
+        </section>
+        <aside class="emergency-strip" aria-labelledby="em-title">
+            <div class="emergency-head">
+                <span class="em-icon" aria-hidden="true">&#x1F6A8;</span>
+                <span class="em-title" id="em-title" data-i18n="emergencyTitle">Emergency</span>
+            </div>
+            <div class="em-buttons">
+                <a href="tel:119" class="em-btn"><span class="em-btn-label" data-i18n="emFire">&#x1F692; Fire</span><span class="em-btn-num">119</span></a>
+                <a href="tel:119" class="em-btn"><span class="em-btn-label" data-i18n="emAmb">&#x1F691; Ambulance</span><span class="em-btn-num">119</span></a>
+                <a href="tel:110" class="em-btn"><span class="em-btn-label" data-i18n="emPolice">&#x1F46E; Police</span><span class="em-btn-num">110</span></a>
+            </div>
+        </aside>
+        <footer class="site-footer">
+            <p>Made with <span class="heart">&#x2665;</span> for our guests &middot; Maisonnotle303</p>
+        </footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <span aria-hidden="true">&#x2713;</span>
+        <span id="toastText">Copied!</span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@master/qrcode.min.js" defer></script>
+    <script>
+        const CONFIG = {
+            workerUrl: 'https://concierge.info-tsumugi4.workers.dev',
+            sheetId:   '1Ex05ckGULQi-T8kmHbW6ksIHd48wQu6UCGaaN1x9hRA',
+            gids: {
+                property:    '1655416281',
+                commonRules: '2144241359',
+                faq:         '44823007',
+                propertyFaq: '1569422357',
+            },
+        };
+
+        const WIFI = { ssid: 'Maisonnotle303', password: 'hello.okubo', type: 'WPA' };
+
+        let currentLang = 'en';
+        let history = [];
+
+        const LANG_DATA = {
+            en: { status: 'Always here to help!',   placeholder: 'Type a question\u2026',       welcome: 'Hi! \uD83D\uDE0A Welcome to Maison Notle 303!<br>How can I help you today?',           copied: 'Copied!',     chipCheckin: 'What time is check-in?',        chipCheckout: 'What time is check-out?',       chipWifi: 'What is the Wi-Fi password?' },
+            ja: { status: '\u3044\u3064\u3067\u3082\u3054\u8CEA\u554F\u3069\u3046\u305E\uFF01',    placeholder: '\u3054\u8CEA\u554F\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u2026',    welcome: '\u3053\u3093\u306B\u3061\u306F\uFF01\uD83D\uDE0A Maisonnotle303\u3078\u3088\u3046\u3053\u305D\uFF01<br>\u4F55\u3067\u3082\u304A\u6C17\u8EFD\u306B\u3069\u3046\u305E\uFF01',              copied: '\u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F\uFF01', chipCheckin: '\u30C1\u30A7\u30C3\u30AF\u30A4\u30F3\u306F\u4F55\u6642\u3067\u3059\u304B\uFF1F',         chipCheckout: '\u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u306F\u4F55\u6642\u3067\u3059\u304B\uFF1F',    chipWifi: 'Wi-Fi\u306E\u30D1\u30B9\u30EF\u30FC\u30C9\u306F\uFF1F' },
+            zh: { status: '\u968F\u65F6\u4E3A\u60A8\u670D\u52A1\uFF01',            placeholder: '\u8BF7\u8F93\u5165\u60A8\u7684\u95EE\u9898\u2026',             welcome: '\u60A8\u597D\uFF01\uD83D\uDE0A \u6B22\u8FCE\u6765\u5230 Maisonnotle303\uFF01<br>\u6709\u4EC0\u4E48\u53EF\u4EE5\u5E2E\u60A8\u7684\u5417\uFF1F',                       copied: '\u5DF2\u590D\u5236\uFF01',      chipCheckin: '\u5165\u4F4F\u65F6\u95F4\u662F\u51E0\u70B9\uFF1F',                 chipCheckout: '\u9000\u623F\u65F6\u95F4\u662F\u51E0\u70B9\uFF1F',              chipWifi: 'Wi-Fi\u5BC6\u7801\u662F\u4EC0\u4E48\uFF1F' },
+            ko: { status: '\uC5B8\uC81C\uB4E0\uC9C0 \uB3C4\uC640\uB4DC\uB9BD\uB2C8\uB2E4!',    placeholder: '\uC9C8\uBB38\uC744 \uC785\uB825\uD558\uC138\uC694\u2026',          welcome: '\uC548\uB155\uD558\uC138\uC694! \uD83D\uDE0A Maisonnotle303\uC5D0 \uC624\uC2E0 \uAC83\uC744 \uD658\uC601\uD569\uB2C8\uB2E4!<br>\uBB34\uC5C7\uC744 \uB3C4\uC640\uB4DC\uB9B4\uAE4C\uC694?',    copied: '\uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4!', chipCheckin: '\uCCB4\uD06C\uC778 \uC2DC\uAC04\uC740 \uC5B8\uC81C\uC778\uAC00\uC694?',          chipCheckout: '\uCCB4\uD06C\uC544\uC6C3 \uC2DC\uAC04\uC740 \uC5B8\uC81C\uC778\uAC00\uC694?',    chipWifi: 'Wi-Fi \uBE44\uBC00\uBC88\uD638\uAC00 \uB098\uC694?' },
+            fr: { status: 'Toujours l\u00E0 pour vous!', placeholder: 'Posez votre question\u2026',     welcome: 'Bonjour ! \uD83D\uDE0A Bienvenue au Maisonnotle303 !<br>Comment puis-je vous aider ?',   copied: 'Copi\u00E9 !',     chipCheckin: '\u00C0 quelle heure est l\'arriv\u00E9e ?',    chipCheckout: '\u00C0 quelle heure est le d\u00E9part ?', chipWifi: 'Quel est le mot de passe Wi-Fi ?' },
+            es: { status: '\u00A1Aqu\u00ED para ayudarle!',   placeholder: 'Escriba su pregunta\u2026',     welcome: '\u00A1Hola! \uD83D\uDE0A \u00A1Bienvenido/a al Maisonnotle303!<br>\u00BFEn qu\u00E9 puedo ayudarle?',        copied: '\u00A1Copiado!',    chipCheckin: '\u00BFA qu\u00E9 hora es el check-in?',        chipCheckout: '\u00BFA qu\u00E9 hora es el check-out?',   chipWifi: '\u00BFCu\u00E1l es la contrase\u00F1a del Wi-Fi?' },
+        };
+
+        const UI_STRINGS = {
+            en: {
+                headerSub: 'Welcome Guide \u2728 Welcome!', heroLocation: '\uD83D\uDCCD Higashi-Shinjuku, Tokyo',
+                wifiLabel: 'Wi-Fi', ssidLabel: 'Network', passLabel: 'Password', qrBtn: 'QR', qrHint: 'Scan with your camera to connect',
+                catArrive: 'Arriving', catInside: 'Inside the Home', catHelp: 'Help & Neighborhood',
+                btn1: 'Route to Accommodations', btn2: 'By Taxi', btn3: 'How to Open', btn4: 'House Rules',
+                btn5: 'Equipment', btn6: 'Nearby Shops', btn7: 'Parking', btn8: 'Trash',
+                btn9: 'Laundry', btn10: 'Circuit Breaker', btn11: 'Emergency', btn12: 'Gas Reset',
+                emergencyTitle: 'Emergency', emFire: '\uD83D\uDE92 Fire', emAmb: '\uD83D\uDE91 Ambulance', emPolice: '\uD83D\uDC6E Police',
+                chipCheckin: '\uD83D\uDD50 Check-in time?', chipCheckout: '\uD83D\uDD54 Check-out time?', chipWifi: '\uD83D\uDCF6 Wi-Fi?',
+            },
+            ja: {
+                headerSub: '\u30A6\u30A7\u30EB\u30AB\u30E0\u30AC\u30A4\u30C9 \u2728 \u3088\u3046\u3053\u305D\uFF01', heroLocation: '\uD83D\uDCCD \u6771\u4EAC\u30FB\u4E21\u56FD',
+                wifiLabel: 'Wi-Fi', ssidLabel: 'SSID', passLabel: '\u30D1\u30B9\u30EF\u30FC\u30C9', qrBtn: 'QR', qrHint: '\u30AB\u30E1\u30E9\u3067\u30B9\u30AD\u30E3\u30F3\u3057\u3066\u63A5\u7D9A',
+                catArrive: '\u304A\u8D8A\u3057\u306E\u969B\u306B', catInside: '\u5BA4\u5185\u306E\u3054\u6848\u5185', catHelp: '\u30D8\u30EB\u30D7\u30FB\u5468\u8FBA\u60C5\u5831',
+                btn1: '\u5BBF\u6CCA\u65BD\u8A2D\u3078\u306E\u30EB\u30FC\u30C8', btn2: '\u30BF\u30AF\u30B7\u30FC\u3092\u3054\u5229\u7528\u306E\u5834\u5408', btn3: '\u9375\u306E\u958B\u3051\u65B9', btn4: '\u30CF\u30A6\u30B9\u30EB\u30FC\u30EB',
+                btn5: '\u8A2D\u5099\u306B\u3064\u3044\u3066', btn6: '\u8FBA\u306E\u304A\u5E97\u60C5\u5831', btn7: '\u99D0\u8ECA\u5834\u60C5\u5831', btn8: '\u30B4\u30DF\u306E\u51FA\u3057\u65B9',
+                btn9: '\u6D17\u6FEF\u6A5F\u306E\u4F7F\u3044\u65B9', btn10: '\u30D6\u30EC\u30FC\u30AB\u30FC\u306B\u3064\u3044\u3066', btn11: '\u7DCA\u6025\u6642\u306E\u9023\u7D61', btn12: '\u30AC\u30B9\u30E1\u30FC\u30BF\u30FC\u5FA9\u5E30',
+                emergencyTitle: '\u7DCA\u6025\u9023\u7D61\u5148', emFire: '\uD83D\uDE92 \u6D88\u9632', emAmb: '\uD83D\uDE91 \u6551\u6025', emPolice: '\uD83D\uDC6E \u8B66\u5BDF',
+                chipCheckin: '\uD83D\uDD50 \u30C1\u30A7\u30C3\u30AF\u30A4\u30F3\u6642\u9593', chipCheckout: '\uD83D\uDD54 \u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u6642\u9593', chipWifi: '\uD83D\uDCF6 Wi-Fi',
+            },
+            zh: {
+                headerSub: '\u6B22\u8FCE\u6307\u5357 \u2728 \u6B22\u8FCE\u60A8\uFF01', heroLocation: '\uD83D\uDCCD \u4E1C\u4EAC\u30FB\u4E24\u56FD',
+                wifiLabel: 'Wi-Fi', ssidLabel: '\u7F51\u7EDC', passLabel: '\u5BC6\u7801', qrBtn: 'QR', qrHint: '\u7528\u76F8\u673A\u626B\u63CF\u5373\u53EF\u8FDE\u63A5',
+                catArrive: '\u5230\u8FBE', catInside: '\u5C4B\u5185\u4FE1\u606F', catHelp: '\u5E2E\u52A9\u4E0E\u5468\u8FB9',
+                btn1: '\u524D\u5F80\u4F4F\u5BBF\u7684\u8DEF\u7EBF', btn2: '\u4E58\u5750\u51FA\u79DF\u8F66', btn3: '\u5982\u4F55\u5F00\u95E8', btn4: '\u623F\u5C4B\u89C4\u5219',
+                btn5: '\u8BBE\u65BD\u8BF4\u660E', btn6: '\u9644\u8FD1\u5546\u5E97', btn7: '\u505C\u8F66\u573A\u4FE1\u606F', btn8: '\u5783\u573E\u5904\u7406\u65B9\u6CD5',
+                btn9: '\u6D17\u8863\u673A\u4F7F\u7528\u65B9\u6CD5', btn10: '\u65AD\u8DEF\u5668\u8BF4\u660E', btn11: '\u7D27\u6025\u8054\u7CFB', btn12: '\u71C3\u6C14\u8868\u590D\u4F4D',
+                emergencyTitle: '\u7D27\u6025\u8054\u7CFB', emFire: '\uD83D\uDE92 \u6D88\u9632', emAmb: '\uD83D\uDE91 \u6551\u62A4', emPolice: '\uD83D\uDC6E \u8B66\u5BDF',
+                chipCheckin: '\uD83D\uDD50 \u5165\u4F4F\u65F6\u95F4\uFF1F', chipCheckout: '\uD83D\uDD54 \u9000\u623F\u65F6\u95F4\uFF1F', chipWifi: '\uD83D\uDCF6 Wi-Fi\uFF1F',
+            },
+            ko: {
+                headerSub: '\uD658\uC601 \uAC00\uC774\uB4DC \u2728 \uD658\uC601\uD569\uB2C8\uB2E4!', heroLocation: '\uD83D\uDCCD \uB3C4\uAFE4\u30FB\uB959\uACE0\uCFE0',
+                wifiLabel: 'Wi-Fi', ssidLabel: '\uB124\uD2B8\uC6CC\uD06C', passLabel: '\uBE44\uBC00\uBC88\uD638', qrBtn: 'QR', qrHint: '\uCE74\uBA54\uB77C\uB85C \uC2A4\uCE94\uD558\uC5EC \uC5F0\uACB0',
+                catArrive: '\uB3C4\uCC29 \uC548\uB0B4', catInside: '\uC2E4\uB0B4 \uC548\uB0B4', catHelp: '\uB3C4\uC6C0\uB9D0 & \uC8FC\uBCC0',
+                btn1: '\uC219\uC18C\uAE4C\uC9C0 \uAC00\uB294 \uAE38', btn2: '\uD0DD\uC2DC \uC774\uC6A9 \uBC29\uBC95', btn3: '\uBB38 \uC5EC\uB294 \uBC29\uBC95', btn4: '\uD558\uC6B0\uC2A4 \uADDC\uCE59',
+                btn5: '\uC2DC\uC124 \uC548\uB0B4', btn6: '\uADFC\uCC98 \uC0C1\uC810', btn7: '\uC8FC\uCC28\uC7A5 \uC548\uB0B4', btn8: '\uC4F0\uB808\uAE30 \uBC84\uB9AC\uB294 \uBC29\uBC95',
+                btn9: '\uC138\uD0C1\uAE30 \uC0AC\uC6A9\uBC95', btn10: '\uCC28\uB2E8\uAE30 \uC548\uB0B4', btn11: '\uAE34\uAE09 \uC5F0\uB77D\uCC98', btn12: '\uAC00\uC2A4 \uBBF8\uD130 \uBCF5\uAD6C',
+                emergencyTitle: '\uAE34\uAE09 \uC5F0\uB77D\uCC98', emFire: '\uD83D\uDE92 \uC18C\uBC29', emAmb: '\uD83D\uDE91 \uAD6C\uAE09', emPolice: '\uD83D\uDC6E \uACBD\uCC30',
+                chipCheckin: '\uD83D\uDD50 \uCCB4\uD06C\uC778 \uC2DC\uAC04?', chipCheckout: '\uD83D\uDD54 \uCCB4\uD06C\uC544\uC6C3 \uC2DC\uAC04?', chipWifi: '\uD83D\uDCF6 Wi-Fi?',
+            },
+            fr: {
+                headerSub: 'Guide de bienvenue \u2728 Bienvenue !', heroLocation: '\uD83D\uDCCD Higashi-Shinjuku, Tokyo',
+                wifiLabel: 'Wi-Fi', ssidLabel: 'R\u00E9seau', passLabel: 'Mot de passe', qrBtn: 'QR', qrHint: 'Scannez avec votre cam\u00E9ra pour vous connecter',
+                catArrive: 'Arriv\u00E9e', catInside: 'Dans le logement', catHelp: 'Aide & Quartier',
+                btn1: 'Itin\u00E9raire vers l\'h\u00E9bergement', btn2: 'En taxi', btn3: 'Comment ouvrir la porte', btn4: 'R\u00E8glement int\u00E9rieur',
+                btn5: '\u00C9quipements', btn6: 'Commerces \u00E0 proximit\u00E9', btn7: 'Parking', btn8: 'Collecte des ordures',
+                btn9: 'Utilisation du lave-linge', btn10: 'Disjoncteur', btn11: 'Urgences', btn12: 'R\u00E9initialisation gaz',
+                emergencyTitle: 'Urgences', emFire: '\uD83D\uDE92 Pompiers', emAmb: '\uD83D\uDE91 Ambulance', emPolice: '\uD83D\uDC6E Police',
+                chipCheckin: '\uD83D\uDD50 Heure d\'arriv\u00E9e ?', chipCheckout: '\uD83D\uDD54 Heure de d\u00E9part ?', chipWifi: '\uD83D\uDCF6 Wi-Fi ?',
+            },
+            es: {
+                headerSub: 'Gu\u00EDa de bienvenida \u2728 \u00A1Bienvenido/a!', heroLocation: '\uD83D\uDCCD Ry\u014Dgoku, Tokio',
+                wifiLabel: 'Wi-Fi', ssidLabel: 'Red', passLabel: 'Contrase\u00F1a', qrBtn: 'QR', qrHint: 'Escanea con tu c\u00E1mara para conectar',
+                catArrive: 'Al llegar', catInside: 'Dentro del alojamiento', catHelp: 'Ayuda y barrio',
+                btn1: 'Ruta al alojamiento', btn2: 'En taxi', btn3: 'C\u00F3mo abrir la puerta', btn4: 'Normas de la casa',
+                btn5: 'Equipamiento', btn6: 'Tiendas cercanas', btn7: 'Aparcamiento', btn8: 'Gesti\u00F3n de residuos',
+                btn9: 'Uso de la lavadora', btn10: 'Interruptor autom\u00E1tico', btn11: 'Emergencias', btn12: 'Reinicio de gas',
+                emergencyTitle: 'Emergencias', emFire: '\uD83D\uDE92 Bomberos', emAmb: '\uD83D\uDE91 Ambulancia', emPolice: '\uD83D\uDC6E Polic\u00EDa',
+                chipCheckin: '\uD83D\uDD50 \u00BFHora de entrada?', chipCheckout: '\uD83D\uDD54 \u00BFHora de salida?', chipWifi: '\uD83D\uDCF6 \u00BFWi-Fi?',
+            },
+        };
+
+        function applyTranslations(lang) {
+            const t = UI_STRINGS[lang];
+            if (!t) return;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (key in t) el.textContent = t[key];
+            });
+            document.querySelectorAll('.chip').forEach(c => {
+                const key = c.getAttribute('data-chip');
+                if (key && key in t) c.textContent = t[key];
+            });
+        }
+
+        function setLang(lang, btn) {
+            currentLang = lang;
+            const d = LANG_DATA[lang];
+            document.getElementById('statusText').textContent  = d.status;
+            document.getElementById('chatInput').placeholder   = d.placeholder;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            history = [];
+            document.getElementById('chatMsgs').innerHTML = `<div class="msg bot">${d.welcome}</div>`;
+            applyTranslations(lang);
+            document.documentElement.lang = lang;
+        }
+
+        async function sendMessage(overrideText) {
+            const input = document.getElementById('chatInput');
+            const msgs  = document.getElementById('chatMsgs');
+            const text  = (overrideText ?? input.value).trim();
+            if (!text) return;
+            addMsg(text, 'user');
+            history.push({ role: 'user', content: text });
+            input.value = '';
+            const chips = document.getElementById('quickChips');
+            if (chips) chips.style.display = 'none';
+            const typing = document.createElement('div');
+            typing.className = 'msg typing';
+            typing.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+            msgs.appendChild(typing);
+            msgs.scrollTop = msgs.scrollHeight;
+            try {
+                const res = await fetch(CONFIG.workerUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: history, lang: currentLang, sheetId: CONFIG.sheetId, gids: CONFIG.gids }),
+                });
+                const data = await res.json();
+                if (!res.ok) { typing.remove(); addMsg(`Error ${res.status}: ${data.error?.message || 'Unknown error'}`, 'bot'); return; }
+                const reply = (data.content?.[0]?.text || 'Sorry, something went wrong. \uD83D\uDE05').replace(/\*\*/g, '');
+                typing.remove();
+                history.push({ role: 'assistant', content: reply });
+                addMsg(reply, 'bot');
+            } catch (e) { typing.remove(); addMsg('Connection error: ' + e.message, 'bot'); }
+        }
+
+        function addMsg(text, type) {
+            const msgs = document.getElementById('chatMsgs');
+            const el   = document.createElement('div');
+            el.className  = `msg ${type}`;
+            if (type === 'bot') el.innerHTML = text.replace(/\n/g, '<br>');
+            else el.textContent = text;
+            msgs.appendChild(el);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function askChip(btn) {
+            const key = btn.getAttribute('data-chip');
+            const q = LANG_DATA[currentLang]?.[key] || btn.textContent;
+            sendMessage(q);
+        }
+
+        async function copyWifi(btn, text) {
+            try { await navigator.clipboard.writeText(text); } catch {
+                const ta = document.createElement('textarea');
+                ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+                document.body.appendChild(ta); ta.select();
+                try { document.execCommand('copy'); } catch {}
+                ta.remove();
+            }
+            btn.classList.add('copied');
+            setTimeout(() => btn.classList.remove('copied'), 900);
+            showToast(LANG_DATA[currentLang]?.copied || 'Copied!');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastText').textContent = msg;
+            t.classList.add('show');
+            clearTimeout(showToast._t);
+            showToast._t = setTimeout(() => t.classList.remove('show'), 1800);
+        }
+
+        let qrRendered = false;
+        function toggleQR() {
+            const panel = document.getElementById('wifiQr');
+            const btn = document.getElementById('qrToggle');
+            const open = !panel.classList.contains('visible');
+            panel.classList.toggle('visible', open);
+            btn.setAttribute('aria-expanded', String(open));
+            if (open && !qrRendered) renderQR();
+        }
+
+        function wifiQrString() {
+            const esc = s => String(s).replace(/([\\;,":])/g, '\\$1');
+            return `WIFI:T:${WIFI.type};S:${esc(WIFI.ssid)};P:${esc(WIFI.password)};;`;
+        }
+
+        function renderQR() {
+            const img = document.getElementById('wifiQrImg');
+            const payload = wifiQrString();
+            const tryLib = () => {
+                if (typeof QRCode === 'undefined') return false;
+                try {
+                    const tmp = document.createElement('div');
+                    new QRCode(tmp, { text: payload, width: 200, height: 200, correctLevel: QRCode.CorrectLevel.M });
+                    const canvas = tmp.querySelector('canvas');
+                    if (canvas) { img.src = canvas.toDataURL('image/png'); qrRendered = true; return true; }
+                    const imgEl = tmp.querySelector('img');
+                    if (imgEl && imgEl.src) { img.src = imgEl.src; qrRendered = true; return true; }
+                } catch {}
+                return false;
+            };
+            if (tryLib()) return;
+            img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(payload)}`;
+            qrRendered = true;
+        }
+
+        document.getElementById('chatInput').addEventListener('keydown', e => {
+            if (e.key === 'Enter' && !e.isComposing) sendMessage();
+        });
+
+        applyTranslations('en');
+    </script>
+  <script src="assets/cute-pack.js" defer></script>
+</body>
+</html>
