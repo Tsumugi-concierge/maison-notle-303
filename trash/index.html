@@ -53,7 +53,32 @@
   </div>
 </div>
 <script>
-const S={'en':{'pageTitle':'Trash','step1':'How to sort trash: PET bottles, cans & glass go together. Other items (food waste, paper, plastics, etc.) go in a separate bag.','step2':'When the trash can is full: Do NOT leave trash outside the building. Place it in the designated trash area. Spare plastic bags are on the kitchen shelf.','backToMenu':'← Back to Menu'},'ja':{'pageTitle':'ゴミ出し','step1':'ゴミの分別: ペットボトル・缶・ビンはまとめて。その他（生ゴミ・紙・プラスチック等）は別の袋に入れてください。','step2':'ゴミ箱がいっぱいになったら: 建物の外にゴミを置かないでください。指定のゴミ置き場に入れてください。予備のゴミ袋はキッチンの棚にあります。','backToMenu':'← メニューへ戻る'},'zh':{'pageTitle':'垃圾处理','step1':'垃圾分类: PET瓶、易拉罐和玻璃瓶放在一起。其他垃圾（厨余、纸张、塑料等）请放入另一个袋子。','step2':'垃圾桶满了怎么办: 请勿将垃圾放在建筑物外。请放入指定垃圾区。备用垃圾袋在厨房架子上。','backToMenu':'← 返回菜单'},'ko':{'pageTitle':'쓰레기 배출','step1':'쓰레기 분리: PET병, 캔, 유리병은 함께. 기타 쓰레기(음식물, 종이, 플라스틱 등)는 별도 봉투에 넣어 주세요.','step2':'쓰레기통이 가득 찼을 때: 건물 밖에 쓰레기를 두지 마세요. 지정 쓰레기 장소에 넣어 주세요. 여분 비닐봉투는 주방 선반에 있습니다.','backToMenu':'← 메뉴로 돌아가기'},'fr':{'pageTitle':'Déchets','step1':'Tri des déchets : PET, canettes et verre ensemble. Les autres déchets (nourriture, papier, plastiques, etc.) dans un sac séparé.','step2':'Quand la poubelle est pleine : Ne laissez pas les déchets à l''extérieur. Placez-les dans la zone dechets designee. Des sacs poubelle de rechange sont dans le placard cuisine.','backToMenu':'← Retour au menu'},'es':{'pageTitle':'Basura','step1':'Separación de basura: Botellas PET, latas y vidrio juntos. Otros residuos (comida, papel, plásticos, etc.) en bolsa separada.','step2':'Cuando el cubo esté lleno: No deje basura fuera del edificio. Colóquela en el area de basura designada. Bolsas extra en el estante de la cocina.','backToMenu':'← Volver al menú'}};
+const S={
+  en:{pageTitle:"Trash",backToMenu:"← Back to Menu",
+    tr1:"Sort your trash: PET bottles, cans & glass together. Other waste (food, paper, plastics) in the general bag.",
+    tr2:"When the trash can is full, please do NOT leave trash outside the building. Send us a message and we will come to collect it.",
+    tr3:"A new plastic bag is stored on the kitchen shelf. Thank you for your cooperation!"},
+  ja:{pageTitle:"ゴミ捨て",backToMenu:"← メニューに戻る",
+    tr1:"分別方法：ペットボトル・缶・瓶はまとめて。その他のゴミ（生ごみ・紙・プラスチックなど）は普通袋へ。",
+    tr2:"ゴミ箱がいっぱいになったら、建物の外に放置しないでください。メッセージでお知らせいただければ、回収に参ります。",
+    tr3:"新しいゴミ袋はキッチンの棚にご用意しています。ご協力ありがとうございます！"},
+  zh:{pageTitle:"垃圾处理",backToMenu:"← 返回菜单",
+    tr1:"垃圾分类：PET瓶、铁罐和玻璃放在一起。其他垃圾（厨余、纸、塑料等）放入普通袋中。",
+    tr2:"垃圾桶装满时，请勿将垃圾放在楼外。请发消息给我们，我们会来收取。",
+    tr3:"新垃圾袋存放在厨房柜子上。感谢您的配合！"},
+  ko:{pageTitle:"쓰레기 버리기",backToMenu:"← 메뉴로 돌아가기",
+    tr1:"분리 방법: PET병, 캔, 유리는 함께 버리세요. 기타 쓰레기(음식, 종이, 플라스틱 등)는 일반 봉투에 버리세요.",
+    tr2:"쓰레기통이 가득 찼을 때 건물 밖에 남기지 마세요. 메시지를 보내주시면 수거하러 가겠습니다.",
+    tr3:"새 비닐봉투는 주방 선반에 있습니다. 협조에 감사드립니다!"},
+  fr:{pageTitle:"Déchets",backToMenu:"← Retour au menu",
+    tr1:"Tri : bouteilles PET, canettes et verre ensemble. Les autres déchets (nourriture, papier, plastiques) dans le sac général.",
+    tr2:"Quand la poubelle est pleine, ne laissez PAS les déchets dehors. Envoyez-nous un message et nous viendrons les récupérer.",
+    tr3:"Un nouveau sac poubelle se trouve sur l'étagère de la cuisine. Merci de votre coopération !"},
+  es:{pageTitle:"Basura",backToMenu:"← Volver al menú",
+    tr1:"Separación: botellas PET, latas y vidrio juntos. Otros residuos (comida, papel, plásticos) en la bolsa general.",
+    tr2:"Cuando el cubo esté lleno, NO deje basura fuera del edificio. Envíenos un mensaje y pasaremos a recogerla.",
+    tr3:"Una nueva bolsa de basura está en el estante de la cocina. ¡Gracias por su cooperación!"}
+};
 function setLang(l,btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=S[l];if(!t)return;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(k in t)el.textContent=t[k];});}
 setLang('en',document.querySelector('.lang-btn.active'));
 </script>
