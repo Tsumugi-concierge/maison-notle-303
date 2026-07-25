@@ -15,7 +15,7 @@
   .back-btn:hover{background:rgba(255,255,255,0.4);}
   .top-title{font-family:'Pacifico',cursive;font-size:1.3rem;color:#fff;text-shadow:1px 2px 4px rgba(0,0,0,0.2);flex:1;}
   .top-emoji{font-size:1.8rem;}
-  .content{padding:20px 16px 40px;max-width:640px;margin:0 auto;}
+  .content{padding:20px 16px 44px;max-width:620px;margin:0 auto;}
   .back-footer{text-align:center;margin-top:28px;padding-bottom:20px;}
   .back-footer a{display:inline-flex;align-items:center;gap:8px;color:#111;font-weight:700;font-size:1rem;text-decoration:none;background:var(--accent-light);padding:12px 24px;border-radius:50px;transition:opacity 0.2s;}
   .back-footer a:hover{opacity:0.8;}
@@ -25,6 +25,11 @@
   .lang-btn:hover:not(.active){border-color:var(--accent);color:var(--accent);}
   .map-link{display:flex;width:max-content;margin-left:auto;margin-right:auto;align-items:center;gap:6px;margin-bottom:20px;background:var(--accent);color:#fff;text-decoration:none;padding:10px 20px;border-radius:50px;font-size:0.9rem;font-weight:800;transition:opacity 0.2s;}
   .map-link:hover{opacity:0.85;}
+  .route-card{background:rgba(255,255,255,0.92);border-radius:22px;padding:14px 14px 16px;margin:18px 0 22px;box-shadow:0 8px 24px rgba(120,50,80,0.10);border:2px solid var(--accent-light);position:relative;overflow:hidden;}
+  .route-card::before{content:"";position:absolute;right:-24px;top:-24px;width:88px;height:88px;border-radius:50%;background:var(--accent-light);opacity:.28;}
+  .route-step-label{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--text-dark);font-weight:900;font-size:.82rem;padding:6px 12px;border-radius:999px;margin-bottom:12px;position:relative;z-index:1;}
+  .route-img{width:88%;max-width:460px;border-radius:18px;margin:0 auto 12px;display:block;box-shadow:0 6px 18px rgba(60,80,120,0.14);}
+  .step-caption{background:#fff;border-left:5px solid var(--accent);border-radius:0 14px 14px 0;padding:12px 14px;font-size:0.9rem;line-height:1.75;color:var(--text-mid);font-weight:800;box-shadow:0 2px 10px rgba(120,50,80,0.06);position:relative;z-index:1;}
 </style>
   <link rel="stylesheet" href="../assets/cute-pack.css">
   <style id="cute-pack-theme">:root{--cp-chip-a:#e1f3ef;--cp-chip-b:#fdf1f7;--cp-hover-shadow:rgba(153,201,189,.18);--cp-dot-1:rgba(249,168,212,.12);}</style>
@@ -46,14 +51,23 @@
 <div class="content">
   <a class="map-link" href="https://maps.app.goo.gl/1h2nFA9giaqgtpFe7" target="_blank" data-i18n="mapLink">🗺 Google Maps</a>
 
-  <img src="./assets/higashi-shinjuku-route-2.jpg" style="width:100%;border-radius:12px;margin-bottom:8px;display:block;" alt="Higashi-Shinjuku route step 2">
-  <p class="step-caption" data-i18n="step2" style="font-size:0.88rem;line-height:1.6;color:var(--text-mid);margin-bottom:20px;padding:10px 12px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(120,50,80,0.07);">Step 2: After exiting the ticket gate, turn left immediately and go up the escalator toward B1 Exit.</p>
+  <div class="route-card">
+    <div class="route-step-label">🚇 Step 1</div>
+    <img src="./assets/higashi-shinjuku-route-2.jpg" class="route-img" alt="Higashi-Shinjuku route step 2">
+    <p class="step-caption" data-i18n="step2">Step 2: After exiting the ticket gate, turn left immediately and go up the escalator toward B1 Exit.</p>
+  </div>
 
-  <img src="./assets/higashi-shinjuku-route-3.jpg" style="width:100%;border-radius:12px;margin-bottom:8px;display:block;" alt="Higashi-Shinjuku route step 3">
-  <p class="step-caption" data-i18n="step3" style="font-size:0.88rem;line-height:1.6;color:var(--text-mid);margin-bottom:20px;padding:10px 12px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(120,50,80,0.07);">Step 3: At the top of the escalator, turn left toward B1 Exit. If you continue straight, you can also use the elevator to street level. The elevator route is closer.</p>
+  <div class="route-card">
+    <div class="route-step-label">⬆️ Step 2</div>
+    <img src="./assets/higashi-shinjuku-route-3.jpg" class="route-img" alt="Higashi-Shinjuku route step 3">
+    <p class="step-caption" data-i18n="step3">Step 3: At the top of the escalator, turn left toward B1 Exit. If you continue straight, you can also use the elevator to street level. The elevator route is closer.</p>
+  </div>
 
-  <img src="./assets/higashi-shinjuku-route-4.jpg" style="width:100%;border-radius:12px;margin-bottom:8px;display:block;" alt="Higashi-Shinjuku route step 4">
-  <p class="step-caption" data-i18n="step4" style="font-size:0.88rem;line-height:1.6;color:var(--text-mid);margin-bottom:20px;padding:10px 12px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(120,50,80,0.07);">Step 4: Walk through the passage toward B1 Exit and go up the stairs to street level. Once outside, turn left.</p>
+  <div class="route-card">
+    <div class="route-step-label">🚶 Step 3</div>
+    <img src="./assets/higashi-shinjuku-route-4.jpg" class="route-img" alt="Higashi-Shinjuku route step 4">
+    <p class="step-caption" data-i18n="step4">Step 4: Walk through the passage toward B1 Exit and go up the stairs to street level. Once outside, turn left.</p>
+  </div>
 
   <div class="back-footer">
     <a href="../" data-i18n="backToMenu">← Back to Menu</a>
