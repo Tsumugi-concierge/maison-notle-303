@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="../index.html" rel="icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gas Reset - Maison Notle 303</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#99c9bd;--accent-light:#b7d9d1;--cream:#f0faf7;--text-dark:#203d38;--text-mid:#42675f;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-dark);min-height:100vh;}
+.lang-bar{display:flex;justify-content:center;gap:6px;padding:10px 16px;flex-wrap:wrap;background:var(--cream);}
+.lang-btn{border:2px solid var(--accent-light);background:rgba(255,255,255,0.92);border-radius:50px;padding:4px 9px;font-family:'Nunito',sans-serif;font-size:0.72rem;font-weight:800;color:var(--text-mid);cursor:pointer;transition:all 0.2s;}
+.lang-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.top-bar{background:linear-gradient(135deg,var(--accent) 0%,#6fa99c 100%);padding:16px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px rgba(0,0,0,0.15);}
+.back-btn{background:rgba(255,255,255,0.25);border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;color:#fff;text-decoration:none;flex-shrink:0;transition:background 0.2s;}
+.back-btn:hover{background:rgba(255,255,255,0.4);}
+.top-title{font-family:'Pacifico',cursive;font-size:1.3rem;color:#fff;text-shadow:1px 2px 4px rgba(0,0,0,0.2);flex:1;}
+.top-emoji{font-size:1.8rem;}
+.content{padding:20px 16px 40px;max-width:640px;margin:0 auto;}
+.info-card{background:#fff;border-radius:14px;padding:16px 18px;margin:18px 0;box-shadow:0 2px 12px rgba(120,50,80,0.08);font-size:0.95rem;line-height:1.7;color:var(--text-mid);}
+.info-card h3{font-size:1rem;font-weight:900;color:var(--accent);margin-bottom:8px;}
+.info-card ol{padding-left:1.2em;}
+.info-card li{margin-bottom:8px;}
+.video-link{display:inline-flex;align-items:center;gap:8px;margin-top:12px;color:var(--accent);font-weight:900;text-decoration:none;background:var(--accent-light);padding:12px 18px;border-radius:50px;}
+.back-footer{text-align:center;margin-top:28px;padding-bottom:20px;}
+.back-footer a{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;font-size:1rem;text-decoration:none;background:var(--accent-light);padding:12px 24px;border-radius:50px;transition:opacity 0.2s;}
+.back-footer a:hover,.video-link:hover{opacity:0.8;}
+</style>
+  <link rel="stylesheet" href="../assets/cute-pack.css">
+  <style id="cute-pack-theme">:root{--cp-chip-a:#e1f3ef;--cp-chip-b:#fdf1f7;--cp-hover-shadow:rgba(153,201,189,.18);--cp-dot-1:rgba(249,168,212,.12);}</style>
+</head>
+<body>
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en',this)">🇬🇧 EN</button>
+  <button class="lang-btn" onclick="setLang('ja',this)">🇯🇵 JA</button>
+  <button class="lang-btn" onclick="setLang('zh',this)">🇨🇳 ZH</button>
+  <button class="lang-btn" onclick="setLang('ko',this)">🇰🇷 KO</button>
+  <button class="lang-btn" onclick="setLang('fr',this)">🇫🇷 FR</button>
+  <button class="lang-btn" onclick="setLang('es',this)">🇪🇸 ES</button>
+</div>
+<div class="top-bar">
+  <a href="../" class="back-btn">←</a>
+  <span class="top-emoji">🔥</span>
+  <div class="top-title" data-i18n="pageTitle">Gas Reset</div>
+</div>
+<div class="content">
+  <div class="info-card">
+    <h3 data-i18n="gasTitle">If the hot water stops</h3>
+    <ol>
+      <li data-i18n="gasStep1">Please check that the water heater remote control is turned on.</li>
+      <li data-i18n="gasStep2">If there is still no hot water anywhere in the room, the gas safety meter may have stopped the gas.</li>
+      <li data-i18n="gasStep3">Please press and hold the reset button on the gas meter outside.</li>
+      <li data-i18n="gasStep4">Wait for a few minutes, then try the hot water again.</li>
+    </ol>
+    <a class="video-link" href="https://youtu.be/0YSmTuE4r2E?feature=shared" target="_blank" rel="noopener" data-i18n="gasVideo">▶ Video guide</a>
+  </div>
+  <div class="back-footer">
+    <a href="../" data-i18n="backToMenu">← Back to Menu</a>
+  </div>
+</div>
+<script>
+const S={
+  en:{pageTitle:'Gas Reset',gasTitle:'If the hot water stops',gasStep1:'Please check that the water heater remote control is turned on.',gasStep2:'If there is still no hot water anywhere in the room, the gas safety meter may have stopped the gas.',gasStep3:'Please press and hold the reset button on the gas meter outside.',gasStep4:'Wait for a few minutes, then try the hot water again.',gasVideo:'▶ Video guide',backToMenu:'← Back to Menu'},
+  ja:{pageTitle:'ガスメーター復帰',gasTitle:'お湯が出ない場合',gasStep1:'給湯器のリモコンがONになっているか確認してください。',gasStep2:'部屋全体でお湯が出ない場合、ガスの安全メーターが停止している可能性があります。',gasStep3:'屋外のガスメーターにある復帰ボタンを長押ししてください。',gasStep4:'数分待ってから、もう一度お湯が出るか確認してください。',gasVideo:'▶ 動画ガイド',backToMenu:'← メニューへ戻る'},
+  zh:{pageTitle:'燃气复位',gasTitle:'如果没有热水',gasStep1:'请确认热水器遥控器已开启。',gasStep2:'如果整个房间都没有热水，燃气安全表可能已停止供气。',gasStep3:'请长按室外燃气表上的复位按钮。',gasStep4:'等待几分钟后，再次尝试使用热水。',gasVideo:'▶ 视频指南',backToMenu:'← 返回菜单'},
+  ko:{pageTitle:'가스 복구',gasTitle:'온수가 나오지 않을 때',gasStep1:'온수기 리모컨이 켜져 있는지 확인해 주세요.',gasStep2:'방 전체에서 온수가 나오지 않으면 가스 안전 계량기가 가스를 차단했을 수 있습니다.',gasStep3:'실외 가스 계량기의 복구 버튼을 길게 눌러 주세요.',gasStep4:'몇 분 기다린 뒤 온수를 다시 확인해 주세요.',gasVideo:'▶ 동영상 안내',backToMenu:'← 메뉴로 돌아가기'},
+  fr:{pageTitle:'Reinitialisation du gaz',gasTitle:"Si l'eau chaude s'arrete",gasStep1:"Verifiez que la telecommande du chauffe-eau est allumee.",gasStep2:"S'il n'y a toujours pas d'eau chaude dans le logement, le compteur de securite du gaz a peut-etre coupe le gaz.",gasStep3:"Maintenez le bouton de reinitialisation du compteur de gaz exterieur enfonce.",gasStep4:"Attendez quelques minutes, puis essayez a nouveau l'eau chaude.",gasVideo:'▶ Guide video',backToMenu:'← Retour au menu'},
+  es:{pageTitle:'Reinicio del gas',gasTitle:'Si no hay agua caliente',gasStep1:'Compruebe que el control remoto del calentador de agua este encendido.',gasStep2:'Si sigue sin haber agua caliente en la habitacion, el medidor de seguridad de gas puede haber detenido el suministro.',gasStep3:'Mantenga presionado el boton de reinicio del medidor de gas exterior.',gasStep4:'Espere unos minutos y pruebe el agua caliente de nuevo.',gasVideo:'▶ Guia en video',backToMenu:'← Volver al menu'}
+};
+function setLang(l,btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=S[l];if(!t)return;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(k in t)el.textContent=t[k];});}
+setLang('en',document.querySelector('.lang-btn.active'));
+</script>
+  <script src="../assets/cute-pack.js" defer></script>
+</body>
+</html>
