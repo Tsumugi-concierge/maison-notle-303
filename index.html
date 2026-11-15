@@ -378,28 +378,8 @@
                 </div>
             </div>
         </nav>
-        <section class="chat-section" aria-labelledby="chat-title">
-            <div class="chat-box">
-                <div class="chat-header">
-                    <div class="chat-avatar" aria-hidden="true">&#x1F916;</div>
-                    <div class="chat-hd-text">
-                        <div class="chat-hd-name" id="chat-title">Maisonnotle303 Assistant</div>
-                        <div class="chat-hd-status"><span class="online-dot" aria-hidden="true"></span><span id="statusText">Always here to help!</span></div>
-                    </div>
-                </div>
-                <div class="chat-msgs" id="chatMsgs" aria-live="polite">
-                    <div class="msg bot">Hi! &#x1F60A; Welcome to Maison Notle 303!<br>How can I help you today?</div>
-                </div>
-                <div class="quick-chips" id="quickChips" aria-label="Suggested questions">
-                    <button type="button" class="chip" data-chip="chipCheckin" onclick="askChip(this)">&#x1F550; Check-in time?</button>
-                    <button type="button" class="chip" data-chip="chipCheckout" onclick="askChip(this)">&#x1F554; Check-out time?</button>
-                    <button type="button" class="chip" data-chip="chipWifi" onclick="askChip(this)">&#x1F4F6; Wi-Fi?</button>
-                </div>
-                <div class="chat-input-row">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Type a question&#x2026;" aria-label="Type your question">
-                    <button class="send-btn" onclick="sendMessage()" aria-label="Send message">&#x27A4;</button>
-                </div>
-            </div>
+        <section class="chat-section" aria-label="Host contact">
+            <p id="hostContact">Please contact your host through the messaging feature on your booking site.</p>
         </section>
         <aside class="emergency-strip" aria-labelledby="em-title">
             <div class="emergency-head">
@@ -422,29 +402,25 @@
     </div>
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@master/qrcode.min.js" defer></script>
     <script>
-        const CONFIG = {
-            workerUrl: 'https://concierge.info-tsumugi4.workers.dev',
-            sheetId:   '1Ex05ckGULQi-T8kmHbW6ksIHd48wQu6UCGaaN1x9hRA',
-            gids: {
-                property:    '1127324686',
-                commonRules: '2144241359',
-                faq:         '44823007',
-                propertyFaq: '1790829854',
-            },
-        };
-
         const WIFI = { ssid: 'Maisonnotle303', password: 'hello.okubo', type: 'WPA' };
 
         let currentLang = 'en';
-        let history = [];
 
-        const LANG_DATA = {
-            en: { status: 'Always here to help!',   placeholder: 'Type a question\u2026',       welcome: 'Hi! \uD83D\uDE0A Welcome to Maison Notle 303!<br>How can I help you today?',           copied: 'Copied!',     chipCheckin: 'What time is check-in?',        chipCheckout: 'What time is check-out?',       chipWifi: 'What is the Wi-Fi password?' },
-            ja: { status: '\u3044\u3064\u3067\u3082\u3054\u8CEA\u554F\u3069\u3046\u305E\uFF01',    placeholder: '\u3054\u8CEA\u554F\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u2026',    welcome: '\u3053\u3093\u306B\u3061\u306F\uFF01\uD83D\uDE0A Maisonnotle303\u3078\u3088\u3046\u3053\u305D\uFF01<br>\u4F55\u3067\u3082\u304A\u6C17\u8EFD\u306B\u3069\u3046\u305E\uFF01',              copied: '\u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F\uFF01', chipCheckin: '\u30C1\u30A7\u30C3\u30AF\u30A4\u30F3\u306F\u4F55\u6642\u3067\u3059\u304B\uFF1F',         chipCheckout: '\u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u306F\u4F55\u6642\u3067\u3059\u304B\uFF1F',    chipWifi: 'Wi-Fi\u306E\u30D1\u30B9\u30EF\u30FC\u30C9\u306F\uFF1F' },
-            zh: { status: '\u968F\u65F6\u4E3A\u60A8\u670D\u52A1\uFF01',            placeholder: '\u8BF7\u8F93\u5165\u60A8\u7684\u95EE\u9898\u2026',             welcome: '\u60A8\u597D\uFF01\uD83D\uDE0A \u6B22\u8FCE\u6765\u5230 Maisonnotle303\uFF01<br>\u6709\u4EC0\u4E48\u53EF\u4EE5\u5E2E\u60A8\u7684\u5417\uFF1F',                       copied: '\u5DF2\u590D\u5236\uFF01',      chipCheckin: '\u5165\u4F4F\u65F6\u95F4\u662F\u51E0\u70B9\uFF1F',                 chipCheckout: '\u9000\u623F\u65F6\u95F4\u662F\u51E0\u70B9\uFF1F',              chipWifi: 'Wi-Fi\u5BC6\u7801\u662F\u4EC0\u4E48\uFF1F' },
-            ko: { status: '\uC5B8\uC81C\uB4E0\uC9C0 \uB3C4\uC640\uB4DC\uB9BD\uB2C8\uB2E4!',    placeholder: '\uC9C8\uBB38\uC744 \uC785\uB825\uD558\uC138\uC694\u2026',          welcome: '\uC548\uB155\uD558\uC138\uC694! \uD83D\uDE0A Maisonnotle303\uC5D0 \uC624\uC2E0 \uAC83\uC744 \uD658\uC601\uD569\uB2C8\uB2E4!<br>\uBB34\uC5C7\uC744 \uB3C4\uC640\uB4DC\uB9B4\uAE4C\uC694?',    copied: '\uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4!', chipCheckin: '\uCCB4\uD06C\uC778 \uC2DC\uAC04\uC740 \uC5B8\uC81C\uC778\uAC00\uC694?',          chipCheckout: '\uCCB4\uD06C\uC544\uC6C3 \uC2DC\uAC04\uC740 \uC5B8\uC81C\uC778\uAC00\uC694?',    chipWifi: 'Wi-Fi \uBE44\uBC00\uBC88\uD638\uAC00 \uB098\uC694?' },
-            fr: { status: 'Toujours l\u00E0 pour vous!', placeholder: 'Posez votre question\u2026',     welcome: 'Bonjour ! \uD83D\uDE0A Bienvenue au Maisonnotle303 !<br>Comment puis-je vous aider ?',   copied: 'Copi\u00E9 !',     chipCheckin: '\u00C0 quelle heure est l\'arriv\u00E9e ?',    chipCheckout: '\u00C0 quelle heure est le d\u00E9part ?', chipWifi: 'Quel est le mot de passe Wi-Fi ?' },
-            es: { status: '\u00A1Aqu\u00ED para ayudarle!',   placeholder: 'Escriba su pregunta\u2026',     welcome: '\u00A1Hola! \uD83D\uDE0A \u00A1Bienvenido/a al Maisonnotle303!<br>\u00BFEn qu\u00E9 puedo ayudarle?',        copied: '\u00A1Copiado!',    chipCheckin: '\u00BFA qu\u00E9 hora es el check-in?',        chipCheckout: '\u00BFA qu\u00E9 hora es el check-out?',   chipWifi: '\u00BFCu\u00E1l es la contrase\u00F1a del Wi-Fi?' },
+        const HOST_CONTACT = {
+            en: 'Please contact your host through the messaging feature on your booking site.',
+            ja: 'ご質問は、ご予約サイトのメッセージでホストへご連絡ください。',
+            zh: '如有疑问，请通过预订平台的消息功能联系房东。',
+            ko: '문의 사항은 예약 사이트의 메시지 기능을 통해 호스트에게 연락해 주세요.',
+            fr: 'Pour toute question, veuillez contacter votre hôte via la messagerie de votre site de réservation.',
+            es: 'Si tienes preguntas, contacta con tu anfitrión a través de los mensajes de la plataforma de reservas.',
+        };
+        const COPIED_TEXT = {
+            en: 'Copied!',
+            ja: '\u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F\uFF01',
+            zh: '\u5DF2\u590D\u5236\uFF01',
+            ko: '\uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4!',
+            fr: 'Copi\u00E9 !',
+            es: '\u00A1Copiado!',
         };
 
         const UI_STRINGS = {
@@ -517,69 +493,15 @@
                 const key = el.getAttribute('data-i18n');
                 if (key in t) el.textContent = t[key];
             });
-            document.querySelectorAll('.chip').forEach(c => {
-                const key = c.getAttribute('data-chip');
-                if (key && key in t) c.textContent = t[key];
-            });
         }
 
         function setLang(lang, btn) {
             currentLang = lang;
-            const d = LANG_DATA[lang];
-            document.getElementById('statusText').textContent  = d.status;
-            document.getElementById('chatInput').placeholder   = d.placeholder;
+            document.getElementById('hostContact').textContent = HOST_CONTACT[lang];
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            history = [];
-            document.getElementById('chatMsgs').innerHTML = `<div class="msg bot">${d.welcome}</div>`;
             applyTranslations(lang);
             document.documentElement.lang = lang;
-        }
-
-        async function sendMessage(overrideText) {
-            const input = document.getElementById('chatInput');
-            const msgs  = document.getElementById('chatMsgs');
-            const text  = (overrideText ?? input.value).trim();
-            if (!text) return;
-            addMsg(text, 'user');
-            history.push({ role: 'user', content: text });
-            input.value = '';
-            const chips = document.getElementById('quickChips');
-            if (chips) chips.style.display = 'none';
-            const typing = document.createElement('div');
-            typing.className = 'msg typing';
-            typing.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
-            msgs.appendChild(typing);
-            msgs.scrollTop = msgs.scrollHeight;
-            try {
-                const res = await fetch(CONFIG.workerUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ messages: history, lang: currentLang, sheetId: CONFIG.sheetId, gids: CONFIG.gids }),
-                });
-                const data = await res.json();
-                if (!res.ok) { typing.remove(); addMsg(`Error ${res.status}: ${data.error?.message || 'Unknown error'}`, 'bot'); return; }
-                const reply = (data.content?.[0]?.text || 'Sorry, something went wrong. \uD83D\uDE05').replace(/\*\*/g, '');
-                typing.remove();
-                history.push({ role: 'assistant', content: reply });
-                addMsg(reply, 'bot');
-            } catch (e) { typing.remove(); addMsg('Connection error: ' + e.message, 'bot'); }
-        }
-
-        function addMsg(text, type) {
-            const msgs = document.getElementById('chatMsgs');
-            const el   = document.createElement('div');
-            el.className  = `msg ${type}`;
-            if (type === 'bot') el.innerHTML = text.replace(/\n/g, '<br>');
-            else el.textContent = text;
-            msgs.appendChild(el);
-            msgs.scrollTop = msgs.scrollHeight;
-        }
-
-        function askChip(btn) {
-            const key = btn.getAttribute('data-chip');
-            const q = LANG_DATA[currentLang]?.[key] || btn.textContent;
-            sendMessage(q);
         }
 
         async function copyWifi(btn, text) {
@@ -592,7 +514,7 @@
             }
             btn.classList.add('copied');
             setTimeout(() => btn.classList.remove('copied'), 900);
-            showToast(LANG_DATA[currentLang]?.copied || 'Copied!');
+            showToast(COPIED_TEXT[currentLang] || 'Copied!');
         }
 
         function showToast(msg) {
@@ -637,10 +559,6 @@
             img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(payload)}`;
             qrRendered = true;
         }
-
-        document.getElementById('chatInput').addEventListener('keydown', e => {
-            if (e.key === 'Enter' && !e.isComposing) sendMessage();
-        });
 
         applyTranslations('en');
     </script>
