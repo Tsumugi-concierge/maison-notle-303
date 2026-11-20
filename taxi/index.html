@@ -219,17 +219,11 @@
   }
 </style>
   <link rel="stylesheet" href="../assets/cute-pack.css">
+  <link rel="stylesheet" href="../assets/i18n.css">
   <style id="cute-pack-theme">:root{--cp-chip-a:#e1f3ef;--cp-chip-b:#fdf1f7;--cp-hover-shadow:rgba(153,201,189,.18);--cp-dot-1:rgba(249,168,212,.12);}</style>
 </head>
 <body>
-<div class="lang-bar">
-  <button class="lang-btn active" onclick="setLang('en', this)">🇬🇧 EN</button>
-  <button class="lang-btn" onclick="setLang('ja', this)">🇯🇵 JA</button>
-  <button class="lang-btn" onclick="setLang('zh', this)">🇨🇳 ZH</button>
-  <button class="lang-btn" onclick="setLang('ko', this)">🇰🇷 KO</button>
-  <button class="lang-btn" onclick="setLang('fr', this)">🇫🇷 FR</button>
-  <button class="lang-btn" onclick="setLang('es', this)">🇪🇸 ES</button>
-</div>
+<div data-i18n-switcher></div>
 <div class="top-bar">
   <a href="../" class="back-btn">←</a>
   <span class="top-emoji">🚕</span>
@@ -281,6 +275,7 @@
   </div>
 </div>
 
+<script src="../assets/i18n.js" defer></script>
 <script>
 const STRINGS = {
   en: {
@@ -382,7 +377,7 @@ function setLang(lang, btn) {
   btn.classList.add('active');
   applyTranslations(lang);
 }
-applyTranslations('en');
+window.I18N_STRINGS = STRINGS;
 </script>
   <script src="../assets/cute-pack.js" defer></script>
 </body>

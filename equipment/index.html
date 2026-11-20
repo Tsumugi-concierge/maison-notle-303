@@ -6,6 +6,7 @@
 <title>Equipment - Maison Notle 303</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/cute-pack.css">
+<link rel="stylesheet" href="../assets/i18n.css">
 <style>
 :root{--accent:#d7bd55;--accent-dark:#a8872e;--accent-light:#f7df7c;--cream:#fff8e8;--text-dark:#4a3b16;--text-mid:#745f28;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -30,14 +31,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-da
 </style>
 </head>
 <body>
-<div class="lang-bar">
-  <button class="lang-btn active" data-lang="en">EN</button>
-  <button class="lang-btn" data-lang="ja">JA</button>
-  <button class="lang-btn" data-lang="zh">ZH</button>
-  <button class="lang-btn" data-lang="ko">KO</button>
-  <button class="lang-btn" data-lang="fr">FR</button>
-  <button class="lang-btn" data-lang="es">ES</button>
-</div>
+<div data-i18n-switcher></div>
 <div class="top-bar">
   <a class="back-btn" href="../">&larr;</a>
   <div class="top-title">Equipment</div>
@@ -47,6 +41,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-da
   <div id="equipment-list"></div>
   <div class="back-footer"><a id="back-link" href="../">&larr; Back to Menu</a></div>
 </main>
+<script src="../assets/i18n.js" defer></script>
 <script>
 const STRINGS = {
   en: { back: '&larr; Back to Menu' },
@@ -71,14 +66,17 @@ function renderSections() {
   `).join('');
   document.getElementById('back-link').innerHTML = STRINGS[currentLang].back;
 }
-document.querySelectorAll('.lang-btn').forEach((button) => {
-  button.addEventListener('click', () => {
-    currentLang = button.dataset.lang;
-    document.querySelectorAll('.lang-btn').forEach((btn) => btn.classList.toggle('active', btn === button));
-    renderSections();
-  });
-});
-renderSections();
+window.I18N_STRINGS = {
+  en: { pageTitle: 'Equipment', backToMenu: STRINGS.en.back },
+  ja: { pageTitle: '設備について', backToMenu: STRINGS.ja.back },
+  zh: { pageTitle: '设备', backToMenu: STRINGS.zh.back },
+  ko: { pageTitle: '시설 안내', backToMenu: STRINGS.ko.back },
+  fr: { pageTitle: 'Équipements', backToMenu: STRINGS.fr.back },
+  es: { pageTitle: 'Equipamiento', backToMenu: STRINGS.es.back },
+};
+window.I18N_ON_CHANGE = function(lang){ currentLang = lang; renderSections(); };
+// initial render; I18N will call on change too
+document.addEventListener('DOMContentLoaded', renderSections);
 </script>
 </body>
 </html>

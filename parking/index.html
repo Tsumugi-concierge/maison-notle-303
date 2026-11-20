@@ -6,6 +6,7 @@
 <title>Parking - Maison Notle 303</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/cute-pack.css">
+<link rel="stylesheet" href="../assets/i18n.css">
 <style>
 :root{--accent:#d7bd55;--accent-dark:#a8872e;--accent-light:#f7df7c;--cream:#fff8e8;--text-dark:#4a3b16;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -27,14 +28,26 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-da
 <body>
 <div class="top-bar">
   <a class="back-btn" href="../">&larr;</a>
-  <div class="top-title">Parking</div>
+  <div class="top-title" data-i18n="pageTitle">Parking</div>
   <div class="top-emoji">📘</div>
 </div>
 <main class="content">
   <section class="guide-stack">
     <figure class="guide-card"><img src="./assets/parking-guide.jpg" alt="Parking page 1" class="guide-image"></figure>
   </section>
-  <div class="back-footer"><a href="../">&larr; Back to Menu</a></div>
+  <div class="back-footer"><a href="../" data-i18n="backToMenu">&larr; Back to Menu</a></div>
 </main>
+<div data-i18n-switcher></div>
 </body>
+<script src="../assets/i18n.js" defer></script>
+<script>
+  window.I18N_STRINGS = {
+    en: { pageTitle: 'Parking', backToMenu: '\u2190 Back to Menu' },
+    ja: { pageTitle: '駐車場', backToMenu: '\u2190 メニューへ戻る' },
+    zh: { pageTitle: '停车场', backToMenu: '\u2190 返回菜单' },
+    ko: { pageTitle: '주차장', backToMenu: '\u2190 메뉴로 돌아가기' },
+    fr: { pageTitle: 'Parking', backToMenu: '\u2190 Retour au menu' },
+    es: { pageTitle: 'Aparcamiento', backToMenu: '\u2190 Volver al menú' },
+  };
+</script>
 </html>

@@ -90,18 +90,7 @@
         .skip-link:focus { left: 10px; }
         main { position: relative; max-width: 560px; margin: 0 auto; z-index: 1; }
 
-        .lang-switcher {
-            position: fixed; top: calc(10px + env(safe-area-inset-top)); right: 10px;
-            z-index: 100; display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 200px;
-        }
-        .lang-btn {
-            border: 1.5px solid rgba(153,201,189,0.35);
-            background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border-radius: 999px; padding: 5px 10px; font-family: inherit; font-size: 0.72rem; font-weight: 800;
-            color: var(--text-mid); cursor: pointer; transition: all 0.2s ease; box-shadow: var(--shadow-xs); letter-spacing: 0.02em;
-        }
-        .lang-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 4px 12px rgba(153,201,189,0.35); }
-        .lang-btn:hover:not(.active), .lang-btn:focus-visible:not(.active) { border-color: var(--orange); color: var(--orange); outline: none; }
+        /* language switcher styles are provided by assets/i18n.css */
 
         .hero { text-align: center; padding: 54px 24px 28px; position: relative; }
         .hero-house {
@@ -262,18 +251,12 @@
         @media (min-width: 520px) { .btn-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
   <link rel="stylesheet" href="assets/cute-pack.css">
+  <link rel="stylesheet" href="assets/i18n.css">
   <style id="cute-pack-theme">:root{--cp-chip-a:#e1f3ef;--cp-chip-b:#fdf1f7;--cp-hover-shadow:rgba(153,201,189,.18);--cp-dot-1:rgba(249,168,212,.12);}</style>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <nav class="lang-switcher" aria-label="Language">
-        <button class="lang-btn active" onclick="setLang('en', this)" aria-label="English">EN</button>
-        <button class="lang-btn" onclick="setLang('ja', this)" aria-label="&#x65E5;&#x672C;&#x8A9E;">JA</button>
-        <button class="lang-btn" onclick="setLang('zh', this)" aria-label="&#x4E2D;&#x6587;">ZH</button>
-        <button class="lang-btn" onclick="setLang('ko', this)" aria-label="&#xD55C;&#xAD6D;&#xC5B4;">KO</button>
-        <button class="lang-btn" onclick="setLang('fr', this)" aria-label="Fran&#xE7;ais">FR</button>
-        <button class="lang-btn" onclick="setLang('es', this)" aria-label="Espa&#xF1;ol">ES</button>
-    </nav>
+    <div data-i18n-switcher aria-label="Language"></div>
     <main id="main">
         <header class="hero">
             <span class="hero-house" aria-hidden="true">&#x1F3E0;</span>
@@ -296,10 +279,10 @@
                     <span class="wifi-row-val">Maisonnotle303</span>
                     <span class="wifi-row-action" aria-hidden="true">&#x29C9;</span>
                 </button>
-                <button class="wifi-row" onclick="copyWifi(this, '')" aria-label="Copy password">
+                <button class="wifi-row" onclick="showPwInfo(this)" aria-label="View password info">
                     <span class="wifi-row-label" data-i18n="passLabel">Password</span>
-                    <span class="wifi-row-val">hello.okubo</span>
-                    <span class="wifi-row-action" aria-hidden="true">&#x29C9;</span>
+                    <span class="wifi-row-val" data-i18n="passInfo">Provided via booking messages</span>
+                    <span class="wifi-row-action" aria-hidden="true">&#x2139;&#xFE0F;</span>
                 </button>
             </div>
             <div class="wifi-qr" id="wifiQr">
@@ -317,17 +300,14 @@
                     <a href="access/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F3E0;</span></span>
                         <span class="pl-en" data-i18n="btn1">Route to Accommodations</span>
-                        <span class="pl-ja">&#x5BBF;&#x6CCA;&#x65BD;&#x8A2D;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C8;</span>
                     </a>
                     <a href="taxi/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F695;</span></span>
                         <span class="pl-en" data-i18n="btn2">By Taxi</span>
-                        <span class="pl-ja">&#x30BF;&#x30AF;&#x30B7;&#x30FC;&#x3092;&#x3054;&#x5229;&#x7528;&#x306E;&#x5834;&#x5408;</span>
                     </a>
                     <a href="how-to-open/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F511;</span></span>
                         <span class="pl-en" data-i18n="btn3">How to Open</span>
-                        <span class="pl-ja">&#x9375;&#x306E;&#x958B;&#x3051;&#x65B9;</span>
                     </a>
                 </div>
             </div>
@@ -340,17 +320,14 @@
                     <a href="house-rules/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F4CB;</span></span>
                         <span class="pl-en" data-i18n="btn4">House Rules</span>
-                        <span class="pl-ja">&#x30CF;&#x30A6;&#x30B9;&#x30EB;&#x30FC;&#x30EB;</span>
                     </a>
                     <a href="equipment/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F6E0;&#xFE0F;</span></span>
                         <span class="pl-en" data-i18n="btn5">Equipment</span>
-                        <span class="pl-ja">&#x8A2D;&#x5099;&#x306B;&#x3064;&#x3044;&#x3066;</span>
                     </a>
                     <a href="trash/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F5D1;&#xFE0F;</span></span>
                         <span class="pl-en" data-i18n="btn8">Trash</span>
-                        <span class="pl-ja">&#x30B4;&#x30DF;&#x306E;&#x51FA;&#x3057;&#x65B9;</span>
                     </a>
                 </div>
             </div>
@@ -363,23 +340,20 @@
                     <a href="gas-reset/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F525;</span></span>
                         <span class="pl-en" data-i18n="btn12">Gas Reset</span>
-                        <span class="pl-ja">&#x30AC;&#x30B9;&#x30E1;&#x30FC;&#x30BF;&#x30FC;&#x5FA9;&#x5E30;</span>
                     </a>
                     <a href="nearby-shops/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F6D2;</span></span>
                         <span class="pl-en" data-i18n="btn6">Nearby Shops</span>
-                        <span class="pl-ja">&#x8FD1;&#x96A3;&#x60C5;&#x5831;</span>
                     </a>
                     <a href="emergency/" class="pl-btn">
                         <span class="pl-icon-wrap"><span class="pl-icon" aria-hidden="true">&#x1F4DE;</span></span>
                         <span class="pl-en" data-i18n="btn11">Emergency</span>
-                        <span class="pl-ja">&#x7DCA;&#x6025;&#x6642;&#x306E;&#x9023;&#x7D61;</span>
                     </a>
                 </div>
             </div>
         </nav>
         <section class="chat-section" aria-label="Host contact">
-            <p id="hostContact">Please contact your host through the messaging feature on your booking site.</p>
+            <p id="hostContact" data-i18n="hostContact">Please contact your host through the messaging feature on your booking site.</p>
         </section>
         <aside class="emergency-strip" aria-labelledby="em-title">
             <div class="emergency-head">
@@ -401,8 +375,9 @@
         <span id="toastText">Copied!</span>
     </div>
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@master/qrcode.min.js" defer></script>
+    <script src="assets/i18n.js" defer></script>
     <script>
-        const WIFI = { ssid: 'Maisonnotle303', password: 'hello.okubo', type: 'WPA' };
+        const WIFI = { ssid: 'Maisonnotle303', password: '', type: 'WPA' };
 
         let currentLang = 'en';
 
@@ -486,6 +461,17 @@
             },
         };
 
+        // Expose to shared i18n helper and sync selection back to this page
+        window.I18N_STRINGS = UI_STRINGS;
+        window.I18N_ON_CHANGE = function(lang){
+            try {
+                currentLang = lang;
+                document.documentElement.lang = lang;
+                const hc = document.getElementById('hostContact');
+                if (hc && HOST_CONTACT[lang]) hc.textContent = HOST_CONTACT[lang];
+            } catch(_){}
+        };
+
         function applyTranslations(lang) {
             const t = UI_STRINGS[lang];
             if (!t) return;
@@ -532,6 +518,7 @@
             const open = !panel.classList.contains('visible');
             panel.classList.toggle('visible', open);
             btn.setAttribute('aria-expanded', String(open));
+            if (!WIFI.password) { showToast((window.I18N && I18N.t('pwToast')) || 'Wi-Fi password is provided in your booking messages.'); return; }
             if (open && !qrRendered) renderQR();
         }
 
@@ -561,6 +548,7 @@
         }
 
         applyTranslations('en');
+        function showPwInfo(){ showToast((window.I18N && I18N.t('pwToast')) || 'Wi-Fi password is provided in your booking messages.'); }
     </script>
   <script src="assets/cute-pack.js" defer></script>
 </body>
