@@ -1,55 +1,50 @@
-Summary of 6-Language i18n Integration
+BRIEF: PR #2 Merge and Conflict Resolution
 
-Work completed on branch feat/i18n-6lang (no PR created, no changes pushed to main).
+Scope
+- Repository: maison-notle-303
+- PR: #2 (feat/i18n-6lang → main), title: "6-language i18n rollout"
+- Conflict file: index.html only
 
-What was done
-- Implemented a single-URL, single-HTML-per-page i18n solution across the site using shared assets:
-  - assets/i18n.js
-  - assets/i18n.css
-- Added a language switcher to every page via a [data-i18n-switcher] container. The switcher:
-  - Persists the selected language in localStorage
-  - Defaults to the browser language on first visit (among en/ja/zh/ko/fr/es), otherwise English
-  - Applies page translations from window.I18N_STRINGS and updates on change (dispatches i18n:change)
-- Kept all URLs unchanged; no per-language page copies were created.
-- Converted all pages to use data-i18n text keys and provided per-page window.I18N_STRINGS mappings.
-- Where pages had existing ad-hoc language code, it was left in place where harmless and wired into the shared i18n (window.I18N_STRINGS and optional window.I18N_ON_CHANGE) to minimize invasive changes.
+What I did
+1. Updated feature branch
+   - On branch feat/i18n-6lang, merged the latest main (origin/main) into the branch.
+   - Resolved the single conflict in index.html.
 
-Pages converted
-- /index.html (root)
-- /access/index.html
-- /taxi/index.html
-- /how-to-open/index.html
-- /house-rules/index.html
-- /equipment/index.html
-- /trash/index.html
-- /nearby-shops/index.html
-- /gas-reset/index.html
-- /emergency/index.html
-- /parking/index.html
+2. Conflict resolution policy applied
+   - Base: feature branch content preferred.
+   - Do not lose relevant changes from main.
+   - Maintain the removal of any embedded Wi‑Fi password and ensure no access codes are exposed.
 
-Notable implementation details
-- Root page index.html:
-  - Replaced the hardcoded language button bar with the shared switcher and included assets/i18n.js and assets/i18n.css.
-  - Exposed translations via window.I18N_STRINGS and synced on language change via window.I18N_ON_CHANGE.
-  - Removed the in-tile duplicate Japanese subtitles so a single data-i18n label is used per tile.
-  - Wi‑Fi password is no longer embedded (see Flags below). The QR toggle shows an informational toast if password isn’t present.
-- Subpages:
-  - Replaced local language bars with a [data-i18n-switcher] host and included ../assets/i18n.js and ../assets/i18n.css.
-  - Hooked existing per-page translation objects up to window.I18N_STRINGS so the shared script manages text updates.
-  - access/: added a missing Step 5 key and translations so the final caption is localized.
-  - equipment/: preserved dynamic rendering from a multilingual SECTIONS model. Added window.I18N_ON_CHANGE to re-render on language changes.
-  - parking/: added minimal i18n keys for title and back-to-menu.
+3. index.html conflict details and decisions
+   - Host contact paragraph:
+     - Kept the feature-side variant that adds data-i18n (branch) while preserving the text from main.
+     - Result: <p id="hostContact" data-i18n="hostContact">…</p>.
+   - Wi‑Fi config constant:
+     - Kept the feature-side empty password to remove the embedded credential.
+     - Removed main’s hardcoded password value and ensured QR generation is gated by the absence of a password.
 
-Flags (sensitive information removed)
-- Wi‑Fi password and any copy/QR behavior that would expose it have been removed from index.html. The password value is omitted and replaced with an informational message: guests are directed to booking messages. The QR button displays an informational toast when no password is present.
-- No other key numbers, lock codes, keybox codes, or similar access codes were found in source content. If any are introduced later, they should be omitted from the pages and handled via guest messaging.
+4. Merge and push
+   - Pushed the resolved feature branch.
+   - Merged PR #2 into main locally with a merge commit and pushed.
+   - Main now contains the i18n rollout and the conflict-free index.html.
 
-Site-specific note (kept as requested)
-- There was an uncommitted change in index.html that removed an embedded chat section. That removal was preserved; nothing was reintroduced.
+Verification
+- No conflict markers remain in index.html.
+- Wi‑Fi password is not embedded:
+  - Verified that the constant is: const WIFI = { ssid: 'Maisonnotle303', password: '', type: 'WPA' }.
+  - Grepped for the previous secret value (hello.okubo) → none found.
+- No access codes present:
+  - Searched repo for terms indicating key numbers, lock codes, keybox numbers, passcodes.
+  - Matches are instructional text only (e.g., “door codes and key box information will be sent to you…” in how-to-open). No numeric access codes are included anywhere.
+- Language switcher works (code-level validation):
+  - index.html includes <div data-i18n-switcher> and loads assets/i18n.js and assets/i18n.css.
+  - assets/i18n.js initializes automatically, builds the 6-language switcher, persists selection, applies window.I18N_STRINGS, and dispatches i18n:change.
+  - window.I18N_STRINGS dictionaries exist for en/ja/zh/ko/fr/es; host contact text updates via window.I18N_ON_CHANGE.
 
-Storage and defaults
-- Selected language is stored under localStorage key i18n.lang by assets/i18n.js.
-- On first visit, browser language is used when it matches one of: en, ja, zh, ko, fr, es; otherwise English.
+Result
+- PR #2 merged into main with commit: Merge pull request #2 from Tsumugi-concierge/feat/i18n-6lang (54666b3).
+- index.html conflict resolved per guidelines; Wi‑Fi password and any access codes are not embedded.
+- i18n language switcher is present and functional by static analysis; no external changes were made outside this repository.
 
-Next steps (optional)
-- If desired, translate document <title> tags and meta descriptions using the same I18N_STRINGS dictionaries for improved SEO. Currently, visible content is localized; <title> remains English unless a specific requirement is added.
+Notes
+- All work was performed within this repository. No external writes or changes were made.
