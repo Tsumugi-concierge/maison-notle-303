@@ -29,17 +29,11 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-da
 .back-footer a:hover,.video-link:hover{opacity:0.8;}
 </style>
   <link rel="stylesheet" href="../assets/cute-pack.css">
+  <link rel="stylesheet" href="../assets/i18n.css">
   <style id="cute-pack-theme">:root{--cp-chip-a:#e1f3ef;--cp-chip-b:#fdf1f7;--cp-hover-shadow:rgba(153,201,189,.18);--cp-dot-1:rgba(249,168,212,.12);}</style>
 </head>
 <body>
-<div class="lang-bar">
-  <button class="lang-btn active" onclick="setLang('en',this)">🇬🇧 EN</button>
-  <button class="lang-btn" onclick="setLang('ja',this)">🇯🇵 JA</button>
-  <button class="lang-btn" onclick="setLang('zh',this)">🇨🇳 ZH</button>
-  <button class="lang-btn" onclick="setLang('ko',this)">🇰🇷 KO</button>
-  <button class="lang-btn" onclick="setLang('fr',this)">🇫🇷 FR</button>
-  <button class="lang-btn" onclick="setLang('es',this)">🇪🇸 ES</button>
-</div>
+<div data-i18n-switcher></div>
 <div class="top-bar">
   <a href="../" class="back-btn">←</a>
   <span class="top-emoji">🔥</span>
@@ -60,6 +54,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-da
     <a href="../" data-i18n="backToMenu">← Back to Menu</a>
   </div>
 </div>
+<script src="../assets/i18n.js" defer></script>
 <script>
 const S={
   en:{pageTitle:'Gas Reset',gasTitle:'If the hot water stops',gasStep1:'Please check that the water heater remote control is turned on.',gasStep2:'If there is still no hot water anywhere in the room, the gas safety meter may have stopped the gas.',gasStep3:'Please press and hold the reset button on the gas meter outside.',gasStep4:'Wait for a few minutes, then try the hot water again.',gasVideo:'▶ Video guide',backToMenu:'← Back to Menu'},
@@ -70,7 +65,7 @@ const S={
   es:{pageTitle:'Reinicio del gas',gasTitle:'Si no hay agua caliente',gasStep1:'Compruebe que el control remoto del calentador de agua este encendido.',gasStep2:'Si sigue sin haber agua caliente en la habitacion, el medidor de seguridad de gas puede haber detenido el suministro.',gasStep3:'Mantenga presionado el boton de reinicio del medidor de gas exterior.',gasStep4:'Espere unos minutos y pruebe el agua caliente de nuevo.',gasVideo:'▶ Guia en video',backToMenu:'← Volver al menu'}
 };
 function setLang(l,btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=S[l];if(!t)return;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(k in t)el.textContent=t[k];});}
-setLang('en',document.querySelector('.lang-btn.active'));
+window.I18N_STRINGS = S;
 </script>
   <script src="../assets/cute-pack.js" defer></script>
 </body>
