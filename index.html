@@ -279,10 +279,10 @@
                     <span class="wifi-row-val">Maisonnotle303</span>
                     <span class="wifi-row-action" aria-hidden="true">&#x29C9;</span>
                 </button>
-                <button class="wifi-row" onclick="showPwInfo(this)" aria-label="View password info">
+                <button class="wifi-row" onclick="copyWifi(this, 'hello.okubo')" aria-label="Copy password">
                     <span class="wifi-row-label" data-i18n="passLabel">Password</span>
-                    <span class="wifi-row-val" data-i18n="passInfo">Provided via booking messages</span>
-                    <span class="wifi-row-action" aria-hidden="true">&#x2139;&#xFE0F;</span>
+                    <span class="wifi-row-val">hello.okubo</span>
+                    <span class="wifi-row-action" aria-hidden="true">&#x29C9;</span>
                 </button>
             </div>
             <div class="wifi-qr" id="wifiQr">
@@ -377,7 +377,7 @@
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@master/qrcode.min.js" defer></script>
     <script src="assets/i18n.js" defer></script>
     <script>
-        const WIFI = { ssid: 'Maisonnotle303', password: '', type: 'WPA' };
+        const WIFI = { ssid: 'Maisonnotle303', password: 'hello.okubo', type: 'WPA' };
 
         let currentLang = 'en';
 
