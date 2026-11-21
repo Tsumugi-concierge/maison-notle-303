@@ -48,3 +48,31 @@ Result
 
 Notes
 - All work was performed within this repository. No external writes or changes were made.
+
+---
+
+Wi‑Fi 情報の復旧（2026-11-21）
+
+実施内容
+1. ブランチ作成: main から `feat/wifi-restore` を作成。
+2. 履歴確認: 6言語化前の `index.html`（commit b8f61eb）にて Wi‑Fi パスワードが `hello.okubo` であることを確認。QRコードは `WIFI` 定数から生成されていた。
+3. 復旧対応（現行の6言語対応を維持）:
+   - `index.html` の `WIFI` 定数を `{ ssid: 'Maisonnotle303', password: 'hello.okubo', type: 'WPA' }` に復旧。
+   - パスワード行のボタン挙動を `showPwInfo(...)` → `copyWifi(this, 'hello.okubo')` に変更し、表示テキストを `hello.okubo` に復旧。
+   - QR トグルは現行のガード（パスワード未設定時にトースト）を維持。今回パスワードを設定したため、開いた際に QR が従来どおり生成される。
+   - ラベルや説明文（`Password`、`Network`、`QR`、`Scan with your camera to connect` 等）は現行の i18n 仕組み（`assets/i18n.js` と `data-i18n`）をそのまま使用。
+4. 非対象の情報は復旧しない方針を厳守（鍵・キーボックス等のアクセスコードは掲載なし）。
+
+確認結果
+1. パスワード値は履歴と完全一致（`hello.okubo`）。UI 上でもプレーンテキストで表示・コピー可。QR コードもこの値で生成。
+2. 6言語化の仕組みは維持:
+   - すべてのページに `<div data-i18n-switcher>` が存在（grep で10件確認）。
+   - `assets/i18n.js` により言語切替・localStorage 永続化・`window.I18N_STRINGS` の適用・`i18n:change` ディスパッチを確認（コードレベル）。
+3. URL 構造は変更なし（href の追加・変更なし、トップおよび各サブページのパスは据え置き）。
+4. Wi‑Fi 以外の文言・データに変更なし。
+
+変更ファイル
+- `index.html` のみ（Wi‑Fi 表示・動作の復旧）。
+
+備考
+- パスワードの文言キー（`passInfo` 等）は未使用になったが、他影響はなし。将来の掃除の候補として残置。
