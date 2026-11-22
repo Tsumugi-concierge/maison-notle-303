@@ -82,8 +82,75 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-da
 </div>
 <script src="../assets/i18n.js" defer></script>
 <script>
-const S={'en':{pageTitle:'House Rules',backToMenu:'← Back to Menu'}, 'ja':{pageTitle:'ハウスルール',backToMenu:'← メニューへ戻る'}, 'zh':{pageTitle:'房屋规定',backToMenu:'← 返回菜单'}, 'ko':{pageTitle:'하우스 룰',backToMenu:'← 메뉴로 돌아가기'}, 'fr':{pageTitle:'Règlement',backToMenu:'← Retour au menu'}, 'es':{pageTitle:'Normas',backToMenu:'← Volver al menú'}};
-function setLang(l,btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=S[l];if(!t)return;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(k in t)el.textContent=t[k];});}
+// 6-language strings for this page
+const S={
+  en:{
+    pageTitle:'House Rules', backToMenu:'← Back to Menu',
+    houseRulesTitle:'House Rules',
+    rule1:'🔇 Quiet hours: 22:00 – 8:00',
+    rule2:'🚭 No smoking (including the balcony)',
+    rule3:'👟 No shoes inside the house',
+    rule4:'🔒 Lock the door when sleeping or going out',
+    rule5:'💡 Turn off lights & A/C when going out',
+    checkInOut:'✅ Check-in 16:00 / Check-out 10:00',
+    keyLoss:'⚠️ Key loss / unreturned: 20,000 yen charge',
+  },
+  ja:{
+    pageTitle:'ハウスルール', backToMenu:'← メニューへ戻る',
+    houseRulesTitle:'ハウスルール',
+    rule1:'🔇 お静かに：22:00〜8:00',
+    rule2:'🚭 全館禁煙（バルコニー含む）',
+    rule3:'👟 室内は土足厳禁',
+    rule4:'🔒 就寝時・外出時は施錠してください',
+    rule5:'💡 外出時は照明・エアコンをオフに',
+    checkInOut:'✅ チェックイン 16:00 / チェックアウト 10:00',
+    keyLoss:'⚠️ 鍵の紛失・未返却：20,000円請求',
+  },
+  zh:{
+    pageTitle:'房屋规定', backToMenu:'← 返回菜单',
+    houseRulesTitle:'房屋规定',
+    rule1:'🔇 安静时间：22:00–8:00',
+    rule2:'🚭 全面禁烟（含阳台）',
+    rule3:'👟 室内请脱鞋',
+    rule4:'🔒 就寝或外出时请锁门',
+    rule5:'💡 外出时请关闭灯光和空调',
+    checkInOut:'✅ 入住 16:00 / 退房 10:00',
+    keyLoss:'⚠️ 丢失或未归还钥匙：收取20,000日元',
+  },
+  ko:{
+    pageTitle:'하우스 룰', backToMenu:'← 메뉴로 돌아가기',
+    houseRulesTitle:'하우스 룰',
+    rule1:'🔇 정숙 시간: 22:00–8:00',
+    rule2:'🚭 금연 (발코니 포함)',
+    rule3:'👟 실내에서는 신발을 벗어주세요',
+    rule4:'🔒 취침·외출 시 문을 잠가주세요',
+    rule5:'💡 외출 시 조명과 에어컨을 꺼주세요',
+    checkInOut:'✅ 체크인 16:00 / 체크아웃 10:00',
+    keyLoss:'⚠️ 열쇠 분실·미반납: 20,000엔 청구',
+  },
+  fr:{
+    pageTitle:'Règlement', backToMenu:'← Retour au menu',
+    houseRulesTitle:'Règlement intérieur',
+    rule1:'🔇 Heures calmes : 22:00–8:00',
+    rule2:'🚭 Interdiction de fumer (y compris le balcon)',
+    rule3:'👟 Pas de chaussures à l’intérieur',
+    rule4:'🔒 Verrouillez la porte la nuit et en sortant',
+    rule5:'💡 Éteignez les lumières et la clim en sortant',
+    checkInOut:'✅ Arrivée 16:00 / Départ 10:00',
+    keyLoss:'⚠️ Perte/non-retour des clés : frais 20 000 ¥',
+  },
+  es:{
+    pageTitle:'Normas', backToMenu:'← Volver al menú',
+    houseRulesTitle:'Normas de la casa',
+    rule1:'🔇 Horario de silencio: 22:00–8:00',
+    rule2:'🚭 Prohibido fumar (también en el balcón)',
+    rule3:'👟 Sin zapatos dentro de la vivienda',
+    rule4:'🔒 Cierre la puerta al dormir o al salir',
+    rule5:'💡 Apague luces y aire acondicionado al salir',
+    checkInOut:'✅ Check-in 16:00 / Check-out 10:00',
+    keyLoss:'⚠️ Pérdida/no devolución de llave: cargo de 20.000 ¥',
+  }
+};
 window.I18N_STRINGS = S;
 </script>
   <script src="../assets/cute-pack.js" defer></script>

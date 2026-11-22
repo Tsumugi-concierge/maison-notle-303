@@ -85,8 +85,69 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text-da
 </div>
 <script src="../assets/i18n.js" defer></script>
 <script>
-const S={'en':{pageTitle:'Emergency',backToMenu:'← Back to Menu'}, 'ja':{pageTitle:'緊急連絡先',backToMenu:'← メニューへ戻る'}, 'zh':{pageTitle:'紧急联系',backToMenu:'← 返回菜单'}, 'ko':{pageTitle:'긴급 연락처',backToMenu:'← 메뉴로 돌아가기'}, 'fr':{pageTitle:'Urgences',backToMenu:'← Retour au menu'}, 'es':{pageTitle:'Emergencias',backToMenu:'← Volver al menú'}};
-function setLang(l,btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=S[l];if(!t)return;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(k in t)el.textContent=t[k];});}
+// 6-language strings for this page
+const S={
+  en:{
+    pageTitle:'Emergency', backToMenu:'← Back to Menu',
+    emergTitle:'🚨 Emergency Contacts',
+    emergPolice:'Police',
+    emergFire:'Fire / Ambulance',
+    emergEngPolice:'🗣 Tokyo English-speaking Police (Weekdays 8:30–17:15)',
+    emergAmbulance:'🌐 Ambulance Interpretation (EN/ES/ZH/KO/TH) Weekdays 17:00–22:00 / Weekends 9:00–22:00',
+    emergHelpline:'🆘 Japan Help Line — 24h English assistance',
+    emergAddress:'📍 Your address: Maison Notle Higashi-Shinjuku #303, 1-1-35 Okubo, Shinjuku-ku, Tokyo 169-0072, Japan\n東京都新宿区大久保1-1-35 メゾンノトル東新宿 303号室',
+  },
+  ja:{
+    pageTitle:'緊急連絡先', backToMenu:'← メニューへ戻る',
+    emergTitle:'🚨 緊急連絡先',
+    emergPolice:'警察',
+    emergFire:'消防・救急',
+    emergEngPolice:'🗣 英語対応 警視庁（平日 8:30–17:15）',
+    emergAmbulance:'🌐 救急・多言語通訳（EN/ES/ZH/KO/TH）平日 17:00–22:00 / 週末 9:00–22:00',
+    emergHelpline:'🆘 Japan Help Line — 英語24時間ヘルプライン',
+    emergAddress:'📍 宿泊先住所：Maison Notle Higashi-Shinjuku #303, 1-1-35 Okubo, Shinjuku-ku, Tokyo 169-0072, Japan\n東京都新宿区大久保1-1-35 メゾンノトル東新宿 303号室',
+  },
+  zh:{
+    pageTitle:'紧急联系', backToMenu:'← 返回菜单',
+    emergTitle:'🚨 紧急联系方式',
+    emergPolice:'警察',
+    emergFire:'消防 / 急救',
+    emergEngPolice:'🗣 东京都英语服务警察（工作日 8:30–17:15）',
+    emergAmbulance:'🌐 急救口译（EN/ES/ZH/KO/TH）工作日 17:00–22:00 / 周末 9:00–22:00',
+    emergHelpline:'🆘 Japan Help Line — 英语24小时援助',
+    emergAddress:'📍 您的地址：Maison Notle Higashi‑Shinjuku #303, 1‑1‑35 Okubo, Shinjuku‑ku, Tokyo 169‑0072, Japan\n東京都新宿区大久保1-1-35 メゾンノトル東新宿 303号室',
+  },
+  ko:{
+    pageTitle:'긴급 연락처', backToMenu:'← 메뉴로 돌아가기',
+    emergTitle:'🚨 긴급 연락처',
+    emergPolice:'경찰',
+    emergFire:'소방 / 구급',
+    emergEngPolice:'🗣 도쿄 영어 대응 경찰 (평일 8:30–17:15)',
+    emergAmbulance:'🌐 구급 통역 (EN/ES/ZH/KO/TH) 평일 17:00–22:00 / 주말 9:00–22:00',
+    emergHelpline:'🆘 Japan Help Line — 영어 24시간 헬프라인',
+    emergAddress:'📍 주소: Maison Notle Higashi‑Shinjuku #303, 1‑1‑35 Okubo, Shinjuku‑ku, Tokyo 169‑0072, Japan\n東京都新宿区大久保1-1-35 メゾンノトル東新宿 303号室',
+  },
+  fr:{
+    pageTitle:'Urgences', backToMenu:'← Retour au menu',
+    emergTitle:"🚨 Numéros d’urgence",
+    emergPolice:'Police',
+    emergFire:'Pompiers / Ambulance',
+    emergEngPolice:"🗣 Police anglophone de Tokyo (Lun–Ven 8:30–17:15)",
+    emergAmbulance:"🌐 Interprétation ambulance (EN/ES/ZH/KO/TH) Lun–Ven 17:00–22:00 / Week-end 9:00–22:00",
+    emergHelpline:"🆘 Japan Help Line — assistance en anglais 24h/24",
+    emergAddress:"📍 Votre adresse : Maison Notle Higashi‑Shinjuku #303, 1‑1‑35 Okubo, Shinjuku‑ku, Tokyo 169‑0072, Japon\n東京都新宿区大久保1-1-35 メゾンノトル東新宿 303号室",
+  },
+  es:{
+    pageTitle:'Emergencias', backToMenu:'← Volver al menú',
+    emergTitle:'🚨 Contactos de emergencia',
+    emergPolice:'Policía',
+    emergFire:'Bomberos / Ambulancia',
+    emergEngPolice:'🗣 Policía de Tokio con atención en inglés (Lun–Vie 8:30–17:15)',
+    emergAmbulance:'🌐 Interpretación para ambulancias (EN/ES/ZH/KO/TH) Laborales 17:00–22:00 / Fines de semana 9:00–22:00',
+    emergHelpline:'🆘 Japan Help Line — asistencia en inglés 24 h',
+    emergAddress:'📍 Su dirección: Maison Notle Higashi‑Shinjuku #303, 1‑1‑35 Okubo, Shinjuku‑ku, Tokio 169‑0072, Japón\n東京都新宿区大久保1-1-35 メゾンノトル東新宿 303号室',
+  }
+};
 window.I18N_STRINGS = S;
 </script>
   <script src="../assets/cute-pack.js" defer></script>

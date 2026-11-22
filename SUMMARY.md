@@ -53,3 +53,11 @@ Storage and defaults
 
 Next steps (optional)
 - If desired, translate document <title> tags and meta descriptions using the same I18N_STRINGS dictionaries for improved SEO. Currently, visible content is localized; <title> remains English unless a specific requirement is added.
+
+Git Repair Notes (2026-11-22)
+- Backed up modified files to .backup-maison303-i18n-20261122/ and saved a unified diff to .maison303-i18n-20261122.patch in the original clone. Both paths added to .git/info/exclude.
+- git fsck timed out once on the original clone; .git/objects/pack was empty; .git/HEAD was valid.
+- Confirmed remote branch: origin/feat/i18n-6lang at e2aedcdc3 via git ls-remote.
+- Original clone had index/object corruption blocking commit (invalid object under equipment/assets/pdf-pages). Created a clean nested clone at .reclone-maison303-20261122 and checked out feat/i18n-6lang.
+- Reapplied the 6-language edits for SUMMARY.md, emergency/, equipment/, house-rules/, nearby-shops/ here.
+- Committed and pushed to origin/feat/i18n-6lang; verified remote head matches the new commit with git ls-remote.
